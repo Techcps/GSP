@@ -1,0 +1,88 @@
+Create and Manage Cloud Resources: Challenge Lab #GSP313
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Task 1. Create a project jumphost instance
+
+
+Navigate menu > compute engine > VM instance then click on create instance. Instance Name: In Lab Mention and then choose Machine type: N1 (f1-micro).
+
+Clicke Create 
+
+NOTE : Do Not Change The Other Settings Just Click On Create.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Task 2. Create a Kubernetes service cluster
+
+
+
+export zone=[ZONE]
+export region=[REGION]
+
+gcloud container clusters create nucleus-backend \
+          --num-nodes 1 \
+          --network nucleus-vpc \
+          --zone $zone
+
+gcloud container clusters get-credentials nucleus-backend \
+          --zone $zone
+
+kubectl create deployment hello-server \
+          --image=gcr.io/google-samples/hello-app:2.0
+
+kubectl expose deployment hello-server \
+          --type=LoadBalancer \
+          --port [PORT_NO]
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Task 3. Set up an HTTP load balancer
+
+
+gcloud compute instance-templates create web-server-template \
+       --metadata-from-file startup-script=startup.sh \
+       --network nucleus-vpc \
+       --machine-type g1-small \
+       --region $region
+
+gcloud compute target-pools create nginx-pool --region $region
+
+gcloud compute instance-groups managed create web-server-group \
+--base-instance-name web-server \
+--size 2 \
+--template web-server-template \
+--region $region
+
+gcloud compute firewall-rules create [FIREWALL_RULE] \
+       --allow tcp:80 \
+       --network nucleus-vpc
+
+gcloud compute http-health-checks create http-basic-check
+
+gcloud compute instance-groups managed \
+       set-named-ports web-server-group \
+       --named-ports http:80 \
+       --region $region
+
+gcloud compute backend-services create web-server-backend \
+       --protocol HTTP \
+       --http-health-checks http-basic-check \
+       --global
+
+gcloud compute backend-services add-backend web-server-backend \
+       --instance-group web-server-group \
+       --instance-group-region $region \
+       --global
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+(Note: After running all the commands it can take upto 2-3 minutes to update the score for task 3) Congratulations, you're all done with the lab 😄
+
+                                        Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                           thank you
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
