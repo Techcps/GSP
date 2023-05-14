@@ -1,0 +1,29 @@
+# openapi2-functions.yaml
+swagger: '2.0'
+info:
+  title: hello-world-hocuopxr description
+  description: Sample API on API Gateway with a Google Cloud Functions backend
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /hello:
+    get:
+      summary: Greet a user
+      operationId: hello
+      x-google-backend:
+        address: https://us-central1-qwiklabs-gcp-03-9936b3d4d707.cloudfunctions.net/helloGET
+      security:
+        - api_key: []
+      responses:
+       '200':
+          description: A successful response
+          schema:
+            type: string
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
