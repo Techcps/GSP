@@ -1,21 +1,6 @@
-swagger: '2.0'
-info:
-  title: GCFunction API
-  description: Sample API on API Gateway with a Google Cloud Functions backend
-  version: 1.0.0
-schemes:
-  - https
-produces:
-  - application/json
-paths:
-  /GCFunction:
-    get:
-      summary: gcfunction
-      operationId: gcfunction
-      x-google-backend:
-        address: https://us-central1-qwiklabs-gcp-01-fad8c1d7b7f6.cloudfunctions.net/GCFunction
-      responses:
-       '200':
-          description: A successful response
-          schema:
-            type: string
+Getting Started with API Gateway: Challenge Lab
+
+export API_ID="gcfunction-api-$(cat /dev/urandom | tr -dc 'a-z' | fold -w ${1:-8} | head -n 1)"
+echo $API_ID
+
+#ARC109
