@@ -2,8 +2,7 @@
                                                 Complete each of the sets of steps below: #GSP340
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-Task 1: Create a table partitioned by date.
+Task 1:
 
 
 CREATE OR REPLACE TABLE <dataset_name>.<table_name>
@@ -22,8 +21,7 @@ WHERE
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-Task 2: Add new columns to your table.
+Task 2: 
 
 
 ALTER TABLE <dataset_name>.<table_name>
@@ -39,7 +37,6 @@ ADD COLUMN mobility STRUCT<
 >
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 TASK 3:
 
@@ -88,6 +85,7 @@ WHERE
 
 TASK 5:
 
+
  UPDATE
    `<dataset_name>.<table_name>` t0
 SET
@@ -125,7 +123,6 @@ SELECT DISTINCT country_name
 FROM `<dataset_name>.<table_name>`
 WHERE country_area IS NULL
 ORDER BY country_name ASC
-
 
 
 
