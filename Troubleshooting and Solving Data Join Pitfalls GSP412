@@ -3,7 +3,9 @@
 
 export PROJECT_ID=YOUR_PROJECT_ID
 
+
 bq mk ecommerce
+
 
 bq query --use_legacy_sql=false \
  'SELECT
@@ -35,6 +37,7 @@ FROM inventory_per_sku
 GROUP BY productSKU' 
 
 
+
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID '#standardSQL
 # the secret is in the JOIN type
 # pull ID fields from both tables
@@ -45,6 +48,7 @@ FROM `data-to-insights.ecommerce.all_sessions_raw` AS website
 LEFT JOIN `data-to-insights.ecommerce.products` AS inventory
 ON website.productSKU = inventory.SKU
 '
+
 
 
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID '
@@ -59,6 +63,8 @@ ON website.productSKU = inventory.SKU
 WHERE inventory.SKU IS NULL
 '
 
+
+
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID '
 #standardSQL
 # reverse the join
@@ -72,12 +78,16 @@ ON website.productSKU = inventory.SKU
 WHERE website.productSKU IS NULL
 '
 
+
+
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID '
 #standardSQL
 CREATE OR REPLACE TABLE ecommerce.site_wide_promotion AS
 SELECT .05 AS discount;
 '
 
+
+
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID '#standardSQL
 SELECT DISTINCT
 productSKU,
@@ -88,19 +98,12 @@ CROSS JOIN ecommerce.site_wide_promotion
 WHERE v2ProductCategory LIKE "%Clearance%"
 AND productSKU = "GGOEGOLC013299"
 '
+
+
 
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID 'SELECT discount FROM ecommerce.site_wide_promotion'
 
-bq query --use_legacy_sql=false --project_id=$PROJECT_ID '#standardSQL
-SELECT DISTINCT
-productSKU,
-v2ProductCategory,
-discount
-FROM `data-to-insights.ecommerce.all_sessions_raw` AS website
-CROSS JOIN ecommerce.site_wide_promotion
-WHERE v2ProductCategory LIKE "%Clearance%"
-AND productSKU = "GGOEGOLC013299"
-'
+
 
 bq query --use_legacy_sql=false --project_id=$PROJECT_ID '#standardSQL
 SELECT DISTINCT
@@ -112,6 +115,31 @@ CROSS JOIN ecommerce.site_wide_promotion
 WHERE v2ProductCategory LIKE "%Clearance%"
 AND productSKU = "GGOEGOLC013299"
 '
+
+
+
+bq query --use_legacy_sql=false --project_id=$PROJECT_ID '#standardSQL
+SELECT DISTINCT
+productSKU,
+v2ProductCategory,
+discount
+FROM `data-to-insights.ecommerce.all_sessions_raw` AS website
+CROSS JOIN ecommerce.site_wide_promotion
+WHERE v2ProductCategory LIKE "%Clearance%"
+AND productSKU = "GGOEGOLC013299"
+'
+
+#standardSQL
+SELECT DISTINCT
+productSKU,
+v2ProductCategory,
+discount
+FROM `data-to-insights.ecommerce.all_sessions_raw` AS website
+CROSS JOIN ecommerce.site_wide_promotion
+WHERE v2ProductCategory LIKE '%Clearance%'
+AND productSKU = 'GGOEGOLC013299'
+
+
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
