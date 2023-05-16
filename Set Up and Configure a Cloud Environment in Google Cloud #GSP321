@@ -11,7 +11,7 @@ gcloud compute networks subnets create griffin-dev-mgmt --network=griffin-dev-vp
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 2
+----->>>>TASK - 2
 
 gsutil cp -r gs://cloud-training/gsp321/dm .
 
@@ -27,7 +27,7 @@ cd ..
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 3
+------>>>>TASK - 3
 
 gcloud compute instances create bastion --network-interface=network=griffin-dev-vpc,subnet=griffin-dev-mgmt  --network-interface=network=griffin-prod-vpc,subnet=griffin-prod-mgmt --tags=ssh --zone=us-east1-b
 
@@ -37,14 +37,14 @@ gcloud compute firewall-rules create fw-ssh-prod --source-ranges=0.0.0.0/0 --tar
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 4 
+------>>>>TASK - 4 
 
 
 Perform manuually  password
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 5
+----->>>>TASK - 5
 
 gcloud container clusters create griffin-dev \
   --network griffin-dev-vpc \
@@ -63,7 +63,7 @@ gsutil cp -r gs://cloud-training/gsp321/wp-k8s .
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 6
+----->>>>TASK - 6
 
 Open Editor -> wp-k8s -> wp-env.yaml Change username and password to:
 username : wp_user
@@ -82,7 +82,7 @@ kubectl create secret generic cloudsql-instance-credentials \
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 7
+------>>>>TASK - 7
 
 In editor: wp-deployment.yaml -> replace YOUR_SQL_INSTANCE with griffin-dev-db.
 
@@ -93,7 +93,7 @@ kubectl create -f wp-service.yaml
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 8
+----->>>>TASK - 8
 
 
 Navigation Menu -> Kubernetes Engine -> Services and Ingress -> Copy Endpoint's address.
@@ -111,7 +111,7 @@ Next -> Next -> Create
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK - 9 
+----->>>>TASK - 9 
 
 Navigation Menu -> IAM & Admin -> IAM -> ADD
 New Member : {Username 2 from Lab instruction page}
