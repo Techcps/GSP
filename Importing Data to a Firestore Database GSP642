@@ -17,7 +17,6 @@ const resource = {
  type: 'global',
 };
 
-
 if (process.argv.length < 3) {
  console.error('Please include a path to a csv file');
  process.exit(1);
