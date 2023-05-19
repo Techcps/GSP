@@ -2,7 +2,7 @@
 
 ----->>>>TASK 1:
 
-create a new view file named order_items_challenge. Place it in the views folder.
+create a new view file named            order_items_challenge             Place it in the views folder.
 You will be referencing the order_items table in the database. Inside of the new view file, replace all the placeholder code with the following:
 
 
@@ -46,13 +46,19 @@ view: order_items_challenge {
 4. Save the changes and then click on validate the LookML
  
 5. Navigate to the order_items_challenge view and add this
+
+
  
 dimension: order_id {
 type: number
 sql: ${TABLE}.order_id ;;
 }
  
+ 
+ 
 6.  Navigate to training_ecommerce.model and add below contents into the explore: order_items
+
+
  
 join: order_items_challenge {
 type: left_outer
@@ -61,11 +67,12 @@ relationship: many_to_one
 }
  
  
+ 
 8. Click on save > Validate LookMl and then Commit Changes and Push, then click Deploy to Production.
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                                                 TASK 1 Complete
+                                                                 TASK 1 Completed
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----->>>>>Task 2:
@@ -81,8 +88,6 @@ Total Revenue
 From Users select
 
 Age
-
-
 City
 State
  
@@ -96,13 +101,19 @@ Copy the code of derived table on the notepad
 
 Navigate back to the develop > ecommerce
 
-Go to the views folder and create a new file with the name as: user_details
+
+Go to the views folder and create a new file with the name as:            user_details
+
 
 Once the file is created, clear the default code and add the contents you copied on the notepad in the previous step
 
-After adding the code go to the first line and replace the default view name with: user_details click on save changes
+After adding the code go to the first line and replace the default view name with:    user_details     click on save changes
 
 Navigate back to the training_ecommerce.model and add below code in the file (add this in order items explore)
+
+
+
+
  
 join: user_details {
  
@@ -127,6 +138,9 @@ relationship: many_to_one
 Fiter #1 & #2
  
 Navigate to the training_ecommerce.model and add the below line in the order_item explore (Make sure to change the value)
+
+
+
  
 sql_always_where: ${sale_price} >= VALUE ;;
  
@@ -141,9 +155,14 @@ unless: [order_items.status, order_items.delivered_date]
  
  
  
+ 
+ 
 Fiter #3 & #4
  
 Navigate to the training_ecommerce.mode and add the below line in the order_item explore (Make sure to change the value)
+
+
+
  
 sql_always_having: ${average_sale_price} > VALUE ;;
  
@@ -151,6 +170,9 @@ always_filter: {
                filters: [order_items.status: "Shipped", users.state: "California", users.traffic_source:   
              "Search"]
              }
+ 
+ 
+ 
  
 Save the changes, Validate LooML and then Commit for deploying into production.
 
@@ -171,11 +193,17 @@ Remove the previous datagroup
  
 Navigate to the training_ecommerce.model and add this code before the order_item explore (Make sure to change the value)
 
+
+
+
 datagroup: order_items_challenge_datagroup {
 sql_trigger: SELECT MAX(order_item_id) from order_items ;;
 max_cache_age: "VALUE hours"
 }
- 
+
+
+
+
 In training_ecommerce.model find the below line of code:
  
 persist_with: training_ecommerce_default_datagroup
