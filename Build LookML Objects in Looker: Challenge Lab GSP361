@@ -1,0 +1,196 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----->>>>TASK 1:
+
+create a new view file named order_items_challenge. Place it in the views folder.
+You will be referencing the order_items table in the database. Inside of the new view file, replace all the placeholder code with the following:
+
+
+view: order_items_challenge {
+           sql_table_name: `cloud-training-demos.looker_ecomm.order_items’  ;;
+           drill_fields: [order_item_id]
+           dimension: order_item_id {
+           primary_key: yes
+           type: number
+           sql: ${TABLE}.id ;;
+         }
+       
+         dimension: is_search_source {
+            type: yesno
+            sql: ${users.traffic_source} = "Search" ;;
+         }
+ 
+ 
+         measure: sales_from_complete_search_users {
+              type: sum
+             sql: ${TABLE}.sale_price ;;
+             filters: [is_search_source: "Yes", order_items.status: "Complete"]
+        }
+ 
+ 
+          measure: total_gross_margin {
+                type: sum
+                sql: ${TABLE}.sale_price - ${inventory_items.cost} ;;
+         }
+ 
+ 
+         dimension: return_days {
+            type: number
+           sql: DATE_DIFF(${order_items.delivered_date}, ${order_items.returned_date}, DAY);;
+        }
+}
+
+
+
+
+4. Save the changes and then click on validate the LookML
+ 
+5. Navigate to the order_items_challenge view and add this
+ 
+dimension: order_id {
+type: number
+sql: ${TABLE}.order_id ;;
+}
+ 
+6.  Navigate to training_ecommerce.model and add below contents into the explore: order_items
+ 
+join: order_items_challenge {
+type: left_outer
+sql_on: ${order_items.order_id} = ${order_items_challenge.order_id} ;;
+relationship: many_to_one
+}
+ 
+ 
+8. Click on save > Validate LookMl and then Commit Changes and Push, then click Deploy to Production.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                 TASK 1 Complete
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----->>>>>Task 2:
+ 
+Click on the Looker icon and on top left corner
+Clickon explore > Order Items
+Under order items select
+
+Order ID
+User ID
+Total Revenue
+
+From Users select
+
+Age
+
+
+City
+State
+ 
+Click on Run
+
+Click on the gear icon just beside of run option
+
+Click on Get LookML > Click on Derived Table section
+
+Copy the code of derived table on the notepad
+
+Navigate back to the develop > ecommerce
+
+Go to the views folder and create a new file with the name as: user_details
+
+Once the file is created, clear the default code and add the contents you copied on the notepad in the previous step
+
+After adding the code go to the first line and replace the default view name with: user_details click on save changes
+
+Navigate back to the training_ecommerce.model and add below code in the file (add this in order items explore)
+ 
+join: user_details {
+ 
+type: left_outer
+ 
+sql_on: ${order_items.user_id} = ${user_details.user_id} ;;
+ 
+relationship: many_to_one
+ 
+}
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      TASK 2 Completed
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------->>>TASK 3:
+
+
+Fiter #1 & #2
+ 
+Navigate to the training_ecommerce.model and add the below line in the order_item explore (Make sure to change the value)
+ 
+sql_always_where: ${sale_price} >= VALUE ;;
+ 
+ 
+conditionally_filter: {
+ 
+filters: [order_items.shipped_date: "2018"]
+ 
+unless: [order_items.status, order_items.delivered_date]
+ 
+}
+ 
+ 
+ 
+Fiter #3 & #4
+ 
+Navigate to the training_ecommerce.mode and add the below line in the order_item explore (Make sure to change the value)
+ 
+sql_always_having: ${average_sale_price} > VALUE ;;
+ 
+always_filter: {
+               filters: [order_items.status: "Shipped", users.state: "California", users.traffic_source:   
+             "Search"]
+             }
+ 
+Save the changes, Validate LooML and then Commit for deploying into production.
+
+                                                                      
+                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                           TASK 3 Completed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------->>>TASK 4: 
+
+
+Remove any filters you created from the previous section.
+ 
+Remove the previous datagroup
+ 
+ 
+ 
+Navigate to the training_ecommerce.model and add this code before the order_item explore (Make sure to change the value)
+
+datagroup: order_items_challenge_datagroup {
+sql_trigger: SELECT MAX(order_item_id) from order_items ;;
+max_cache_age: "VALUE hours"
+}
+ 
+In training_ecommerce.model find the below line of code:
+ 
+persist_with: training_ecommerce_default_datagroup
+ 
+Replace below line with above line of code
+ 
+persist_with: order_items_challenge_datagroup
+
+
+
+
+                                          ------------------>>>>>>>Just wait for few minutes<<<<<----------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+          Congratulations, you're all done with the lab 😄                           Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                                 Thank You!!!!
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
