@@ -1,3 +1,19 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Please make sure that you have this table aleady, if not then please create this table:-
+
+
+
+spls/bq-soccer-analytics/competitions.json                	competitions
+ 
+spls/bq-soccer-analytics/matches.json	                         matches
+ 
+spls/bq-soccer-analytics/teams.json	                           teams
+
+spls/bq-soccer-analytics/players.json	                         players
+ 
+
+
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ----->>TASK 2:
