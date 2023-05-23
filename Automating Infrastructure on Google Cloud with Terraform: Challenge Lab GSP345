@@ -1,9 +1,10 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-TASK 1. Create the configuration files
+TASK 1.
 
-Run in Cloud Shell
+Run in Cloud Shell:
+
 
 touch main.tf
 touch variables.tf
@@ -23,7 +24,10 @@ touch variables.tf
 cd
 
 
+
 Add the following to the each variables.tf file, and fill in the GCP Project ID:
+
+
 
 variable "region" {
  default = "us-central1"
@@ -40,6 +44,8 @@ variable "project_id" {
 
 
 Add the following to the main.tf file :
+
+
 
 terraform {
   required_providers {
@@ -64,16 +70,15 @@ module "instances" {
 }
 
 
-Run terraform init in Cloud Shell in the root directory to initialize terraform.
-
-If you are getting error after running above command just try this run terraform init -migrate -state  command first 
+Run   terraform init      in Cloud Shell in the root directory to initialize terraform.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK 2. Import infrastructure
+TASK 2.
 
-Next, navigate to modules/instances/instances.tf. Copy the following configuration into the file:
+Navigate to---->>modules/instances/instances.tf.
+
 
 resource "google_compute_instance" "tf-instance-1" {
   name         = "tf-instance-1"
@@ -117,21 +122,27 @@ resource "google_compute_instance" "tf-instance-2" {
 
 
 Navigate to Compute Engine > VM Instances. Click on tf-instance-1. Copy the Instance ID
-
 Navigate to Compute Engine > VM Instances. Click on tf-instance-2. Copy the Instance ID
 
+
 Run in cloud shell
+
+
 terraform import module.instances.google_compute_instance.tf-instance-1 <Instance ID - 1>
 terraform import module.instances.google_compute_instance.tf-instance-2 <Instance ID - 2>
+
 
 terraform plan
 terraform apply
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK 3. Configure a remote backend
+TASK 3.
+
 
 Add the following code to the modules/storage/storage.tf file
+
+
 
 resource "google_storage_bucket" "storage-bucket" {
   name          = "<YOUR-BUCKET>"
@@ -141,7 +152,9 @@ resource "google_storage_bucket" "storage-bucket" {
 }
 
 
+
 Next, add the following to the main.tf file:
+
 
 
 module "storage" {
@@ -172,7 +185,8 @@ terraform init
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK 4. Modify and update infrastructure
+TASK 4.
+
 
 navigate to modules/instances/instances.tf modify tf-instance-1 and tf-instance-2
 add tf-instance-3
@@ -200,13 +214,14 @@ resource "google_compute_instance" "Instance Name" {
 
 
 Run cloud shell : 
+
 terraform init
 terraform apply
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK 5. Taint and destroy resources
+TASK 5.
 
 terraform taint module.instances.google_compute_instance.Instance_name
 
@@ -221,7 +236,8 @@ terraform apply
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK 6. Use a module from the Registry
+TASK 6.
+
 
 In the Terraform Registry, browse to the Network Module.
 Copy and paste the following into the main.tf 
@@ -255,13 +271,14 @@ module "vpc" {
 
 
 run cloud shell :
+
 terraform init
 terraform apply
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Next, navigate to the instances.tf file and update the configuration resources to connect tf-instance-1 to subnet-01 and tf-instance-2 to subnet-02
+Navigate to the instances.tf file and update the configuration resources to connect tf-instance-1 to subnet-01 and tf-instance-2 to subnet-02
 
 
 resource "google_compute_instance" "tf-instance-1"{
