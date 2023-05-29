@@ -1,0 +1,33 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Enable the Dataplex API and set variables
+
+1. In Cloud Shell, run the following command to enable the Dataplex API.
+
+gcloud services enable \
+  dataplex.googleapis.com 
+  
+  
+2. Run the following command to create a variable for project ID:
+
+export PROJECT_ID=$(gcloud config get-value project)
+
+3. Run the following command to create a variable for region:
+
+export REGION=""
+gcloud config set compute/region $REGION
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 1: 
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+          Congratulations, you're all done with the lab 😄                           Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                                 Thank You!!!!
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
