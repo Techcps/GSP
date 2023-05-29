@@ -1,5 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+TASK 1:
+
 export REGION=
 
 
@@ -7,11 +9,22 @@ gcloud pubsub topics create $DEVSHELL_PROJECT_ID-topic
 
 gcloud  pubsub subscriptions create --topic $DEVSHELL_PROJECT_ID-topic $DEVSHELL_PROJECT_ID-topic-sub
 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK2:
+
+
 gcloud run deploy pubsub-events \
   --image=gcr.io/cloudrun/hello \
   --platform=managed \
   --region=$REGION \
   --allow-unauthenticated
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 3:
 
 
 gcloud eventarc triggers create pubsub-events-trigger \
