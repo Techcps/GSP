@@ -1,21 +1,34 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-TASK 1:
+TASK 2:
+
+Paste the below code snippet to the main.py
 
 
 
-
-API_KEY = z2e6t1j0G8r1cw1oPnLnvd4rgaG4kwDefpF8msf97HiCA8Sx1bMaHv0YBCKsz3aL
-
-
-
-
-URL = https://ap-south-1.aws.data.mongodb-api.com/app/data-oonhe/endpoint/data/v1
-
-
-
-
-
+import base64
+import functions_framework
+# Triggered from a message on a Cloud Pub/Sub topic.
+@functions_framework.cloud_event
+def hello_pubsub(cloud_event):
+ api_key = "z2e6t1j0G8r1cw1oPnLnvd4rgaG4kwDefpF8msf97HiCA8Sx1bMaHv0YBCKsz3aL"
+ url = "https://ap-south-1.aws.data.mongodb-api.com/app/data-oonhe/endpoint/data/v1"
+ import requests
+ import json
+ payload = json.dumps({
+   "collection": "sensor",
+   "database": "Weather-station",
+   "dataSource": "Sandbox",
+   "document": json.loads(base64.b64decode(cloud_event.data["message"]["data"]).decode("utf-8"))
+ })
+ headers = {
+   'Content-Type': 'application/json',
+   'Access-Control-Request-Headers': '*',
+   'api-key': api_key,
+ }
+ print(payload)
+ response = requests.request("POST", url, headers=headers, data=payload)
+ return response
 
 
 
