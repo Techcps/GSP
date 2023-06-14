@@ -60,7 +60,7 @@ gsutil cp landmark-response.json gs://$DEVSHELL_PROJECT_ID-bucket
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-export API_KEY=AIzaSyDSTIVXFJVyGlr_8yBcXkWihng-fOdvsug
+export API_KEY=
 
 sudo chmod +x techcpsarc122.sh
 ./techcpsarc122.sh
