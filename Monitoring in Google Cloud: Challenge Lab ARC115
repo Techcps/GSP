@@ -22,7 +22,7 @@ TASK 5:
 
 
 resource.type="gce_instance"
-logName="projects/YOUR_PROJECT_ID/logs/apache-access"
+logName="projects/ENTER_YOUR_PROJECT_ID/logs/apache-access"
 textPayload:"200"
 
 
