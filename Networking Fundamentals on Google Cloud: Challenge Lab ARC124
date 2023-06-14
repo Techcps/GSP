@@ -86,6 +86,8 @@ IPADDRESS=$(gcloud compute forwarding-rules describe www-rule --region=$REGION  
 
 #TASK 3
 
+
+
 gcloud compute instance-templates create lb-backend-template \
    --region=$REGION \
    --network=default \
@@ -171,14 +173,6 @@ gcloud compute forwarding-rules create http-content-rule \
     --global \
     --target-http-proxy=http-lb-proxy \
     --ports=80
-
-
-
-
-
-
-
-
 
 
 
