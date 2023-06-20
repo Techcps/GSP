@@ -4,13 +4,17 @@
 
 gcloud services enable \
   dataplex.googleapis.com 
+
   export PROJECT_ID=$(gcloud config get-value project)
-  export REGION=""
+
+  export REGION="ENTER_YOUR_REGION"
 gcloud config set compute/region $REGION
+
 gcloud dataplex lakes create ecommerce \
    --location=$REGION \
    --display-name="Ecommerce" \
    --description="Ecommerce Domain"
+
    gcloud dataplex zones create orders-curated-zone \
     --location=$REGION \
     --lake=ecommerce \
@@ -19,7 +23,9 @@ gcloud dataplex lakes create ecommerce \
     --type=CURATED \
     --discovery-enabled \
     --discovery-schedule="0 * * * *"
+
     bq mk --location=$REGION --dataset orders 
+
     gcloud dataplex assets create orders-curated-dataset \
 --location=$REGION \
 --lake=ecommerce \
@@ -28,8 +34,11 @@ gcloud dataplex lakes create ecommerce \
 --resource-type=BIGQUERY_DATASET \
 --resource-name=projects/$PROJECT_ID/datasets/orders \
 --discovery-enabled 
+
 gcloud dataplex assets delete orders-curated-dataset --location=$REGION --zone=orders-curated-zone --lake=ecommerce 
+
 gcloud dataplex zones delete orders-curated-zone --location=$REGION --lake=ecommerce
+
 gcloud dataplex lakes delete ecommerce --location=$REGION
 
 
