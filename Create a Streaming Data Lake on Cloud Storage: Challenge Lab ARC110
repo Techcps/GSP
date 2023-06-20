@@ -1,0 +1,69 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 1:
+
+export BUCKET_NAME=
+
+export TOPIC_ID=
+
+export PROJECT_ID=
+
+gcloud config set compute/region "REGION"
+
+gcloud services disable dataflow.googleapis.com
+
+gcloud services enable dataflow.googleapis.com
+
+PROJECT_ID=$(gcloud config get-value project)
+REGION=us-central1
+AE_REGION=us-central
+
+
+gsutil mb gs://$BUCKET_NAME
+
+gcloud pubsub topics create $TOPIC_ID
+
+gcloud app create --region=$AE_REGION
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+TASK 2:
+
+
+gcloud scheduler jobs create pubsub publisher-job --schedule="* * * * *" \
+    --topic=$TOPIC_ID --message-body="****Hello!**"
+    
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 3:
+
+
+
+gcloud scheduler jobs run publisher-job
+
+git clone https://github.com/GoogleCloudPlatform/java-docs-samples.git
+cd java-docs-samples/pubsub/streaming-analytics
+
+
+mvn compile exec:java \
+-Dexec.mainClass=com.examples.pubsub.streaming.PubSubToGcs \
+-Dexec.cleanupDaemonThreads=false \
+-Dexec.args=" \
+    --project=$PROJECT_ID \
+    --region=$REGION \
+    --inputTopic=projects/$PROJECT_ID/topics/$TOPIC_ID \
+    --output=gs://$BUCKET_NAME/samples/output \
+    --runner=DataflowRunner \
+    --windowSize=2"
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+          Congratulations, you're all done with the lab 😄                           Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                                 Thank You!!!!
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
