@@ -1,7 +1,8 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Create input, output, and archive Cloud Storage buckets
+Create input, output, and archive Cloud Storage buckets--------
+
 
 export PROJECT_ID=$(gcloud config get-value core/project)
 export BUCKET_LOCATION=us-central1
@@ -14,7 +15,8 @@ gsutil mb -c standard -l ${BUCKET_LOCATION} -b on \
 
 
 
-Create a BigQuery dataset and tables
+Create a BigQuery dataset and tables-----------
+
 
   bq --location=US mk  -d \
      --description "Form Parser Results" \
