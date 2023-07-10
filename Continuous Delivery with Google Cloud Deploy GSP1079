@@ -4,7 +4,7 @@
 
 cd web
 skaffold build --interactive=false \
---default-repo <INSERT YOUR ARTIFACT REPOSITORY HERE> \
+--default-repo <ENTER YOUR ARTIFACT REPOSITORY HERE> \
 --file-output artifacts.json
 cd ..
 
@@ -115,10 +115,9 @@ cat web/skaffold.yaml
 
 cd web
 skaffold build --interactive=false \
---default-repo <Make Changes Here> \
+--default-repo <ENTER YOUR ARTIFACT REPOSITORY HERE> \
 --file-output artifacts.json
 cd ..
-
 
 
 
