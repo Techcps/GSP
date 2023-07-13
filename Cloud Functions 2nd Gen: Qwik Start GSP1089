@@ -1,7 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Command 1:
-
 
 gcloud services enable \
   artifactregistry.googleapis.com \
@@ -61,7 +59,6 @@ gcloud functions deploy nodejs-http-function \
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Command 2: 
 
 
 PROJECT_NUMBER=$(gcloud projects list --filter="project_id:$PROJECT_ID" --format='value(project_number)')
@@ -114,7 +111,6 @@ gcloud functions deploy nodejs-storage-function \
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Command 3
 
 
 From the Navigation Menu, go to IAM & Admin > Audit Logs
@@ -126,7 +122,6 @@ On the info pane on the right, check Admin Read, Data Read, and Data Write log t
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Command 4:
 
 
 gcloud projects add-iam-policy-binding $PROJECT_ID \
