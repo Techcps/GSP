@@ -23,7 +23,7 @@ TASK 5:
 
 export PROJECT_ID=$(gcloud info --format="value(config.project)")
 
-export PREVIEW_URL=[REPLACE_WITH_PREVIEW_WEB_URL]
+export PREVIEW_URL=[REPLACE_WITH_THE_PREVIEW_WEB_URL]
 
 echo $PREVIEW_URL/fs/$PROJECT_ID/symbols/product/symbol
 
