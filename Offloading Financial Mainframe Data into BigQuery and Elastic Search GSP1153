@@ -81,7 +81,7 @@ gcloud services enable dataflow.googleapis.com
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-export CONNECTION_URL=quicklab:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvOjQ0MyQzNTdjOWM2MDlmZGM0YjE4ODRjMTliMWVhOThkNGFlMCQzOWE5N2I5Yzc3NDk0ZmZhYjU2ZTI5YzM3NjU5MTllNQ==
+export CONNECTION_URL:dXMtY2VudHJhbDEuZ2NwLmNsb3VkLmVzLmlvOjQ0MyQzNTdjOWM2MDlmZGM0YjE4ODRjMTliMWVhOThkNGFlMCQzOWE5N2I5Yzc3NDk0ZmZhYjU2ZTI5YzM3NjU5MTllNQ==
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ export API_KEY=c2t5UElJa0JJeTRBdnVPZG96QTU6bUJNQVhhblBTaEdRWDFkNGo1Ujhjdw==
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-gcloud dataflow flex-template run bqtoelastic-quicklab-job --template-file-gcs-location gs://dataflow-templates-us-central1/latest/flex/BigQuery_to_Elasticsearch --region us-central1 --num-workers 1 --parameters index=transactions,maxNumWorkers=1,query='select * from `YOUR_PROJECT_ID.mainframe_import.account_transactions`',connectionUrl=$CONNECTION_URL,apiKey=$API_KEY
+gcloud dataflow flex-template run bqtoelastic --template-file-gcs-location gs://dataflow-templates-us-central1/latest/flex/BigQuery_to_Elasticsearch --region us-central1 --num-workers 1 --parameters index=transactions,maxNumWorkers=1,query='select * from `YOUR_PROJECT_ID.mainframe_import.account_transactions`',connectionUrl=$CONNECTION_URL,apiKey=$API_KEY
 
 
 
