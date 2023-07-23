@@ -30,15 +30,15 @@ Add the following to the each variables.tf file, and fill in the GCP Project ID:
 
 
 variable "region" {
- default = "us-central1"
+ default = "<REGION>"
 }
 
 variable "zone" {
- default = "us-central1-a"
+ default = "<ZONE>"
 }
 
 variable "project_id" {
- default = "<REPLACE PROJECT ID>"
+ default = "<PROJECT_ID>"
 }
 
 
@@ -145,7 +145,7 @@ Add the following code to the modules/storage/storage.tf file
 
 
 resource "google_storage_bucket" "storage-bucket" {
-  name          = "<YOUR-BUCKET>"
+  name          = "<BUCKET_NAME>"
   location      = "US"
   force_destroy = true
   uniform_bucket_level_access = true
@@ -170,7 +170,7 @@ Next, update the main.tf
 
 terraform {
   backend "gcs" {
-    bucket  = "<REPLACE YOUR BUCKET>"
+    bucket  = "<BUCKET_NAME>"
  prefix  = "terraform/state"
   }
   required_providers {
@@ -247,20 +247,20 @@ module "vpc" {
     source  = "terraform-google-modules/network/google"
     version = "~> 6.0.0"
 
-    project_id   = "PROJECT_ID"
-    network_name = "VPC_NAME"
+    project_id   = "<PROJECT_ID>"
+    network_name = "<VPC_NAME>"
     routing_mode = "GLOBAL"
 
     subnets = [
         {
             subnet_name           = "subnet-01"
             subnet_ip             = "10.10.10.0/24"
-            subnet_region         = "us-central1"
+            subnet_region         = "<REGION>"
         },
         {
             subnet_name           = "subnet-02"
             subnet_ip             = "10.10.20.0/24"
-            subnet_region         = "us-central1"
+            subnet_region         = "<REGION>"
             subnet_private_access = "true"
             subnet_flow_logs      = "true"
             description           = "This subnet has a description"
@@ -293,7 +293,7 @@ resource "google_compute_instance" "tf-instance-1"{
   }
 
   network_interface {
-    network = "VPC_NAME"
+    network = "<VPC_NAME>"
      subnetwork = "subnet-01"
   }
   metadata_startup_script = <<-EOT
@@ -314,7 +314,7 @@ resource "google_compute_instance" "tf-instance-2"{
   }
 
   network_interface {
-    network = "VPC_NAME"
+    network = "<VPC_NAME>"
      subnetwork = "subnet-02"
   }
 
@@ -322,33 +322,6 @@ resource "google_compute_instance" "tf-instance-2"{
         #!/bin/bash
     EOT
   allow_stopping_for_update = true
-}
-
-
-
-module "vpc" {
-    source  = "terraform-google-modules/network/google"
-    version = "~> 6.0.0"
-
-    project_id   = "PROJECT_ID"
-    network_name = "VPC_NAME"
-    routing_mode = "GLOBAL"
-
-    subnets = [
-        {
-            subnet_name           = "subnet-01"
-            subnet_ip             = "10.10.10.0/24"
-            subnet_region         = "us-central1"
-        },
-        {
-            subnet_name           = "subnet-02"
-            subnet_ip             = "10.10.20.0/24"
-            subnet_region         = "us-central1"
-            subnet_private_access = "true"
-            subnet_flow_logs      = "true"
-            description           = "This subnet has a description"
-        },
-    ]
 }
 
 
@@ -363,12 +336,12 @@ terraform apply
 
 TASK 6: Configure a firewall
 
-Add the following resource to the main.tf file and fill in the GCP Project ID:
+Add the following resource to the main.tf file and fill in the GCP Project_ID:
 
 
 resource "google_compute_firewall" "tf-firewall"{
   name    = "tf-firewall"
- network = "projects/<PROJECT_ID>/global/networks/VPC_Name"
+ network = "projects/<PROJECT_ID>/global/networks/<VPC_Name>"
 
   allow {
     protocol = "tcp"
