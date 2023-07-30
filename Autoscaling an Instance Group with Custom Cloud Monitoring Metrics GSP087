@@ -9,9 +9,7 @@ gcloud compute instance-templates create autoscaling-instance01 --metadata=start
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-                                       Congratulations, you're all done with the lab 😄
-
-                                        Don't forget to subscribe our YouTube Channel😄
-                                        
-                                                           thank you
+                         Congratulations, you're all done with the lab 😄 Don't forget to subscribe our YouTube Channel😄
+                                         
+                                                              thank you
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
