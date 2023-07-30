@@ -18,7 +18,7 @@ FROM
 WHERE
   RAND() < 0.001
   AND trip_distance > 0
-  AND fare_amount >= 2.5
+  AND fare_amount >= 2.1
   AND pickup_longitude > -78
   AND pickup_longitude < -70
   AND dropoff_longitude > -78
