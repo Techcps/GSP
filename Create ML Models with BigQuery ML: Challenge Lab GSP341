@@ -2,6 +2,7 @@
 
 TASK 1:
 
+Open CLOUD SHELL and Run the comman
 
 bq mk austin
 
@@ -59,7 +60,6 @@ TASK 4:
 
 
 
--- Evaluation metrics for location_model
 SELECT
   SQRT(mean_squared_error) AS rmse,
   mean_absolute_error
@@ -83,7 +83,6 @@ FROM
 
 
 
--- Evaluation metrics for subscriber_model
 SELECT
   SQRT(mean_squared_error) AS rmse,
   mean_absolute_error
