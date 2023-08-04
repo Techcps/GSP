@@ -11,7 +11,7 @@ export REPO=
 gcloud artifacts repositories create $REPO \
     --repository-format=docker \
     --location=$REGION \
-    --description="Subscribe to quicklab"
+    --description="Like and Subscribe to techcps"
 
 
 gcloud beta container --project "$PROJECT_ID" clusters create "$CLUSTER_NAME" --zone "$ZONE" --no-enable-basic-auth --cluster-version "1.25.8-gke.500" --release-channel "regular" --machine-type "e2-medium" --image-type "COS_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true  --logging=SYSTEM,WORKLOAD --monitoring=SYSTEM --enable-ip-alias --network "projects/$PROJECT_ID/global/networks/default" --subnetwork "projects/$PROJECT_ID/regions/$REGION/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --enable-autoscaling --min-nodes "2" --max-nodes "6" --location-policy "BALANCED" --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing,GcePersistentDiskCsiDriver --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --enable-shielded-nodes --node-locations "$ZONE"
@@ -37,7 +37,7 @@ gsutil cp -r gs://spls/gsp330/sample-app/* sample-app
 git init
 cd sample-app/
 git add .
-git commit -m "Subscribe to quicklab" 
+git commit -m "Like and Subscribe to techcps" 
 git push -u origin master
 
 
@@ -56,7 +56,7 @@ gcloud builds submit --tag="${REGION}-docker.pkg.dev/${PROJECT_ID}/$REPO/hello-c
 
 
 git add .
-git commit -m "Subscribe to quicklab" 
+git commit -m "Like and Subscribe to techcps" 
 git push -u origin dev
 
 
@@ -65,7 +65,7 @@ git checkout master
 
 
 git add .
-git commit -m "Subscribe to quicklab" 
+git commit -m "Like and Subscribe to techcps" 
 git push -u origin master
 
 
@@ -78,7 +78,7 @@ git checkout dev
 
 
 git add .
-git commit -m "Subscribe to quicklab" 
+git commit -m "Like and Subscribe to techcps" 
 git push -u origin dev
 
 
@@ -87,16 +87,14 @@ git checkout master
 
 
 git add .
-git commit -m "Subscribe to quicklab" 
+git commit -m "Like and Subscribe to techcps" 
 git push -u origin master
 
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-                                       Congratulations, you're all done with the lab 😄
-
-                                        Don't forget to subscribe our YouTube Channel😄
+                     Congratulations, you're all done with the lab 😄 Don't forget to subscribe our YouTube Channel😄
                                         
                                                            thank you
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
