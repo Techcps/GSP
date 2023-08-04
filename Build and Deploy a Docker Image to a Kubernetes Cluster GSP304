@@ -1,10 +1,6 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-gcloud container clusters create echo-cluster --num-nodes 2 --zone us-central1-a --machine-type n1-standard-2
-
-
 gsutil cp gs://sureskills-ql/challenge-labs/ch04-kubernetes-app-deployment/echo-web.tar.gz .
 
 
@@ -12,6 +8,9 @@ tar -xvf echo-web.tar.gz
 
 
 gcloud builds submit --tag gcr.io/$DEVSHELL_PROJECT_ID/echo-app:v1 .
+
+
+gcloud container clusters create echo-cluster --num-nodes 2 --zone us-central1-a --machine-type n1-standard-2
 
 
 kubectl create deployment echo-web --image=gcr.io/qwiklabs-resources/echo-app:v1
