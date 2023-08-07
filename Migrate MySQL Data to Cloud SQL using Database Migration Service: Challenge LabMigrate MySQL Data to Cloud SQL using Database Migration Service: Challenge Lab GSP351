@@ -7,6 +7,7 @@ Verify that the Service Networking API is enabled
 
 If necessary, enable the API.
 
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -22,12 +23,14 @@ mysql -u admin -p
 
 
 
+Copy your Password from task 1 and paste then Enter
 When prompted for a password, enter:
 
 changeme!
 
 
 
+Password will not visible to you
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
