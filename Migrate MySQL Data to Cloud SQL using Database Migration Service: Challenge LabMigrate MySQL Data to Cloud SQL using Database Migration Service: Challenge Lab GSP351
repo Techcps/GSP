@@ -1,14 +1,26 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 Verify that the Database Migration API is enabled
 
-Verify that the Service Networking API is enabled
+In the Google Cloud Console, enter Database Migration API in the top search bar. Click on the result for Database Migration API.
+
+This page will either show status information or give you the option to enable the API.
 
 If necessary, enable the API.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Verify that the Service Networking API is enabled
+
+In the Google Cloud Console, enter Service Networking API in the top search bar. Click on the result for Service Networking API.
+
+This page will either show status information or give you the option to enable the API.
+
+If necessary, enable the API.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 Connect to the MySQL source instance
@@ -26,7 +38,6 @@ mysql -u admin -p
 Copy your Password from task 1 and paste then Enter
 When prompted for a password, enter:
 
-changeme!
 
 
 
