@@ -1,0 +1,38 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Verify that the Database Migration API is enabled
+
+Verify that the Service Networking API is enabled
+
+If necessary, enable the API.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Connect to the MySQL source instance
+
+
+In the Google Cloud Console, on the Navigation menu (Navigation menu icon), click Compute Engine > VM instances.
+For Connect, click on SSH to open a terminal window.
+To connect to the MySQL interactive console within the terminal window, run the following command:
+
+
+mysql -u admin -p
+
+
+
+When prompted for a password, enter:
+
+changeme!
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                           Congratulations, you're all done with the lab 😄 Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                                 Thanks for watching.!
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
