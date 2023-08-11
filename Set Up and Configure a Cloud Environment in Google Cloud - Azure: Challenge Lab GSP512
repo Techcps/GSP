@@ -126,7 +126,15 @@ Wait for the workspace creation to complete
 Go to Uptime checks > CREATE UPTIME CHECKS
 Now enter the info as below:
 
+Field	Value
+Title	WordPress Uptime
+Check Type	HTTP
+Resource Type	URL
+Hostname	YOUR-WORDPRESS_ENDPOINT
+Path	/
 
+Click TEST.
+Click SAVE 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
