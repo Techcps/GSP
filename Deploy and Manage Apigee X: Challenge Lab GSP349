@@ -79,7 +79,10 @@ TASK 4: Create a Cloud Armor security policy and attach it to the global load ba
 ▶ For Name, specify [ protect-apigee ].
 ▶ Default rule action choose Allow.
 ▶ Click Next step > + Add rule > Advanced mode.
-▶ For Match, specify the following expression: evaluatePreconfiguredExpr('rce-stable').
+▶ For Match, specify the following expression:
+
+🔵   evaluatePreconfiguredExpr('rce-stable')
+
 ▶ Leave Action set to Deny, and leave Deny status set to 403 (Forbidden).
 ▶ Set Priority to 1000.
 ▶ Click Done.
