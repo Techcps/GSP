@@ -46,7 +46,10 @@ TASK 3: Create and activate a NAT address for the instance
 ▶ Open the Apigee API.
 ▶ find organizations.instances.natAddresses.
 ▶ Under organizations.instances.natAddresses, click create.
-▶ In the Try this API pane, set the parent to: organizations/{YOUR PROJECTID}/instances/eval-instance
+▶ In the Try this API pane, set the parent to:
+
+🔵      organizations/{YOUR PROJECTID}/instances/eval-instance
+
 ▶ Change {YOUR PROJECTID} to your [ Google Cloud Project ID ].
 ▶ Click Add request body parameters, and then click name.
 ▶ Between the double quotes, set the string to: [ apigee-nat-ip ].
@@ -55,7 +58,10 @@ TASK 3: Create and activate a NAT address for the instance
 ✪ Activate NAT address:-
 
 ▶ In the left pane, under organizations.instances.natAddresses, click activate.
-▶ In the Try this API pane, set the parent to: organizations/{YOUR PROJECTID}/instances/eval-instance/natAddresses/apigee-nat-ip
+▶ In the Try this API pane, set the parent to:
+
+🔵     organizations/{YOUR PROJECTID}/instances/eval-instance/natAddresses/apigee-nat-ip
+
 ▶ Change {YOUR PROJECTID} to your [ Google Cloud Project ID ].
 ▶ Click Execute.
 
