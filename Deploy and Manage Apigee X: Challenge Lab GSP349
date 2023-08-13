@@ -1,0 +1,115 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 1: Modify the environments and environment groups
+
+✪ Add staging environment:
+
+▶ Navigate to Admin > Environments > Overview.
+▶ In the upper right corner, click +Environment.
+▶ Specify [ staging ] for Display name and Environment name. Other fields should remain unchanged.
+▶ Click Create.
+
+✪ Add staging environment group: 
+
+▶ Navigate to Admin > Environments > Groups.
+▶ In the upper right corner, click +Environment Group.
+▶ Name the environment group [ staging-group ], and then click Add.
+▶ In the [ staging-group ] environment group box, click the edit (pencil) button (pencil icon).
+▶ In the Environments box, click the + button.
+▶ Select the [ staging ] environment, and then click Add.
+▶ Leave the default hostname that is created for the new environment group.
+
+
+
+
+Subscribe to TECHCPS
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 2: Use the provisioning wizard to set up access routing
+
+
+✪ Set up access routing:-
+
+▶ Next to Access routing, click Edit.
+▶ Select Enable internet access.
+▶ Select Use wildcard DNS service.
+▶ For Subnetwork, select [ api-subnet ].
+▶ Click Set Access.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 3: Create and activate a NAT address for the instance
+
+✪ Create NAT address:-
+
+▶ Open the Apigee API.
+▶ find organizations.instances.natAddresses.
+▶ Under organizations.instances.natAddresses, click create.
+▶ In the Try this API pane, set the parent to: organizations/{YOUR PROJECTID}/instances/eval-instance
+▶ Change {YOUR PROJECTID} to your [ Google Cloud Project ID ].
+▶ Click Add request body parameters, and then click name.
+▶ Between the double quotes, set the string to: [ apigee-nat-ip ].
+▶ Click Execute.
+
+✪ Activate NAT address:-
+
+▶ In the left pane, under organizations.instances.natAddresses, click activate.
+▶ In the Try this API pane, set the parent to: organizations/{YOUR PROJECTID}/instances/eval-instance/natAddresses/apigee-nat-ip
+▶ Change {YOUR PROJECTID} to your [ Google Cloud Project ID ].
+▶ Click Execute.
+
+
+
+Thanks for watching.!
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 4: Create a Cloud Armor security policy and attach it to the global load balancer
+
+✪ Create the Cloud Armor policy:-
+
+▶ In the Cloud Console tab, on the Navigation menu (navigation menu button), navigate to Network security > Cloud Armor.
+▶ Click Create policy.
+▶ For Name, specify [ protect-apigee ].
+▶ Default rule action choose Allow.
+▶ Click Next step > + Add rule > Advanced mode.
+▶ For Match, specify the following expression: evaluatePreconfiguredExpr('rce-stable').
+▶ Leave Action set to Deny, and leave Deny status set to 403 (Forbidden).
+▶ Set Priority to 1000.
+▶ Click Done.
+▶ Click Create policy.
+
+✪ Attach the Cloud Armor policy:-
+
+▶ Next to protect-apigee, click the policy menu button (three dots), and then click Apply policy to target.
+▶ Click + Add target.
+▶ For the Target dropdown, select apigee-proxy-backend, and then click Add.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 5: Attach the staging environment to the runtime instance
+
+✪ Attach the environment to the runtime instance:-
+
+▶ Return to the Cloud Console tab.
+▶ On the top-right toolbar, click the Activate Cloud Shell button.
+▶ In the Cloud Shell, verify the variable with your Apigee org name.
+▶ Run the following command:
+
+🔵  echo ${GOOGLE_CLOUD_PROJECT}
+
+
+🔵  export INSTANCE_NAME=eval-instance; curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" -X POST "https://apigee.googleapis.com/v1/organizations/${GOOGLE_CLOUD_PROJECT}/instances/${INSTANCE_NAME}/attachments" -d '{ "environment": "staging" }' | jq
+
+
+🔵   export ATTACHING_ENV=staging; export INSTANCE_NAME=eval-instance; echo "waiting for ${ATTACHING_ENV} attachment"; while : ; do export ATTACHMENT_DONE=$(curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" -X GET "https://apigee.googleapis.com/v1/organizations/${GOOGLE_CLOUD_PROJECT}/instances/${INSTANCE_NAME}/attachments" | jq "select(.attachments != null) | .attachments[] | select(.environment == \"${ATTACHING_ENV}\") | .environment" --join-output); [[ "${ATTACHMENT_DONE}" != "${ATTACHING_ENV}" ]] || break; echo -n "."; sleep 5; done; echo; echo "***${ATTACHING_ENV} ENVIRONMENT ATTACHED***";
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                           Congratulations, you're all done with the lab 😄 Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                                 Thanks for watching.!
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
