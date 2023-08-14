@@ -44,7 +44,9 @@ kubectl create poddisruptionbudget onlineboutique-frontend-pdb --selector app=fr
 
 KUBE_EDITOR="nano" kubectl edit deployment/frontend --namespace dev
 
-Find image under spec 
+
+Find the image under spec replace.
+
 replace image: gcr.io/qwiklabs-resources/onlineboutique-frontend:v2.1
 and in imagePullPolicy: Always
 
