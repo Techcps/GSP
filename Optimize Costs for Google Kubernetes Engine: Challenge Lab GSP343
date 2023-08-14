@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 TASK 1: 
+
 
 ZONE=us-central1-b
 
@@ -48,6 +48,7 @@ KUBE_EDITOR="nano" kubectl edit deployment/frontend --namespace dev
 Find the image under spec replace.
 
 replace image: gcr.io/qwiklabs-resources/onlineboutique-frontend:v2.1
+
 and in imagePullPolicy: Always
 
 
@@ -59,7 +60,8 @@ Press ctrl+x and Y then enter, for save and exit
 
 TASK 4:
 
-kubectl autoscale deployment frontend --cpu-percent=50 --min=1 --max=13 --namespace dev
+
+kubectl autoscale deployment frontend --cpu-percent=50 --min=1 --max=17 --namespace dev
 
 kubectl get hpa --namespace dev
 ZONE=us-central1-b
