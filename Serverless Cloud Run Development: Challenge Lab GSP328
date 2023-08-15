@@ -1,0 +1,128 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+gcloud auth list
+gcloud config list project
+
+gcloud config set project \
+$(gcloud projects list --format='value(PROJECT_ID)' \
+--filter='qwiklabs-gcp')
+
+gcloud config set run/region us-central1
+gcloud config set run/platform managed
+
+git clone https://github.com/rosera/pet-theory.git && cd pet-theory/lab07
+export PROJECT_ID=$(gcloud info --format='value(config.project)')
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 1:
+
+
+cd ~/pet-theory/lab07/unit-api-billing
+
+gcloud builds submit --tag gcr.io/${PROJECT_ID}/billing-staging-api:0.1
+gcloud run deploy Service_Name --image gcr.io/${PROJECT_ID}/billing-staging-api:0.1
+
+gcloud run services list
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Task 2:
+
+
+cd ~/pet-theory/lab07/staging-frontend-billing
+
+gcloud builds submit --tag gcr.io/${PROJECT_ID}/frontend-staging:0.1
+gcloud run deploy Service_Name --image gcr.io/${PROJECT_ID}/frontend-staging:0.1
+
+gcloud run services list
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 3:
+
+
+
+cd ~/pet-theory/lab07/staging-api-billing
+
+gcloud builds submit --tag gcr.io/${PROJECT_ID}/billing-staging-api:0.2
+gcloud run deploy Service_Name --image gcr.io/${PROJECT_ID}/billing-staging-api:0.2
+
+gcloud run services list
+
+BILLING_URL=$(gcloud run services describe $BILLING_SERVICE \
+  --platform managed \
+  --region us-central1 \
+  --format "value(status.url)")
+
+curl -X get -H "Authorization: Bearer $(gcloud auth print-identity-token)" $BILLING_URL
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 4:
+
+
+gcloud iam service-accounts create Service_Name --display-name "Billing Service Cloud Run"
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 5:
+
+
+cd ~/pet-theory/lab07/prod-api-billing
+
+gcloud builds submit --tag gcr.io/${PROJECT_ID}/billing-prod-api:0.1
+gcloud run deploy Service_Name --image gcr.io/${PROJECT_ID}/billing-prod-api:0.1
+
+gcloud run services list
+
+PROD_BILLING_SERVICE=Service_Name_private
+
+PROD_BILLING_URL=$(gcloud run services \
+  describe $PROD_BILLING_SERVICE \
+  --platform managed \
+  --region us-central1 \
+  --format "value(status.url)")
+
+curl -X get -H "Authorization: Bearer \
+ $(gcloud auth print-identity-token)" \
+ $PROD_BILLING_URL
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 6:
+
+
+gcloud iam service-accounts create Service_Name --display-name "Billing Service Cloud Run Invoker"
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 7:
+
+
+
+cd ~/pet-theory/lab07/prod-frontend-billing
+
+gcloud builds submit --tag gcr.io/${PROJECT_ID}/frontend-prod:0.1
+gcloud run deploy Service_Name --image gcr.io/${PROJECT_ID}/frontend-prod:0.1
+
+gcloud run services list
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                               Congratulations, you're all done with the lab 😄Don't forget to subscribe our YouTube Channel😄
+
+                                                                 Thanks for watching.!!!!
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
