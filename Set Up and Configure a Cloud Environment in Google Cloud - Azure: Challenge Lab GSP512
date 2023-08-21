@@ -1,7 +1,20 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+gcloud auth list
+
+
+gcloud config list project
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export USER_NAME2=
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 TASK 1: 
+
 
 gcloud compute networks create griffin-dev-vpc --subnet-mode custom
 
@@ -25,13 +38,13 @@ sed -i s/SET_REGION/us-east1/g prod-network.yaml
 gcloud deployment-manager deployments create prod-network \
     --config=prod-network.yaml
 
+cd ..
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 TASK 3:
 
-
-cd ..
 
 gcloud compute instances create bastion --network-interface=network=griffin-dev-vpc,subnet=griffin-dev-mgmt  --network-interface=network=griffin-prod-vpc,subnet=griffin-prod-mgmt --tags=ssh --zone=us-east1-b
 
@@ -43,21 +56,20 @@ gcloud compute firewall-rules create fw-ssh-prod --source-ranges=0.0.0.0/0 --tar
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 TASK 4:
 
 
-gcloud sql instances create griffin-dev-db --root-password password --region=us-east1
+gcloud sql instances create griffin-dev-db --root-password password --region=us-east1 --database-version=MYSQL_5_7
+
 
 gcloud sql connect griffin-dev-db
 
-# Copy paste the following from the lab mannual
+
 CREATE DATABASE wordpress;
 GRANT ALL PRIVILEGES ON wordpress.* TO "wp_user"@"%" IDENTIFIED BY "stormwind_rules";
 FLUSH PRIVILEGES;
 
-# Use the following to get out of the SQL terminal
-exit;
+exit
 
 
 
@@ -65,15 +77,19 @@ exit;
 
 TASK 5:
 
-
 gcloud container clusters create griffin-dev \
   --network griffin-dev-vpc \
   --subnetwork griffin-dev-wp \
   --machine-type n1-standard-4 \
   --num-nodes 2  \
   --zone us-east1-b
-  
+
+
 gcloud container clusters get-credentials griffin-dev --zone us-east1-b
+
+cd ~/
+
+gsutil cp -r gs://cloud-training/gsp321/wp-k8s .
 
 
 
@@ -82,19 +98,17 @@ gcloud container clusters get-credentials griffin-dev --zone us-east1-b
 TASK 6:
 
 
-gsutil cp -r gs://cloud-training/gsp321/wp-k8s .
+sed -i "s/username_goes_here/wp_user/g" wp-k8s/wp-env.yaml
+sed -i "s/username_goes_here/stormwind_rules/g" wp-k8s/wp-env.yaml
+
+
 
 cd wp-k8s
-
-sed -i s/username_goes_here/wp_user/g wp-env.yaml
-
-sed -i s/password_goes_here/stormwind_rules/g wp-env.yaml
 
 kubectl create -f wp-env.yaml
 
 gcloud iam service-accounts keys create key.json \
     --iam-account=cloud-sql-proxy@$GOOGLE_CLOUD_PROJECT.iam.gserviceaccount.com
-
 kubectl create secret generic cloudsql-instance-credentials \
     --from-file key.json
 
@@ -102,43 +116,52 @@ kubectl create secret generic cloudsql-instance-credentials \
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 TASK 7:
 
 
-# Use the following for replace YOUR_SQL_INSTANCE with "griffin-dev-db"
-I=$(gcloud sql instances describe griffin-dev-db --format="value(connectionName)")
+sed -i "s/YOUR_SQL_INSTANCE/griffin-dev-db/g" wp-deployment.yaml
 
-sed -i s/YOUR_SQL_INSTANCE/$I/g wp-deployment.yaml
 
 kubectl create -f wp-deployment.yaml
-
 kubectl create -f wp-service.yaml
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+kubectl create -f wp-deployment.yaml
+kubectl create -f wp-service.yaml
 
-TASK 8: Enable monitoring
 
-
-Go to OPERATIONS > Monitoring
-Wait for the workspace creation to complete
-Go to Uptime checks > CREATE UPTIME CHECKS
-Now enter the info as below:
-
-Field	Value
-Title	WordPress Uptime
-Check Type	HTTP
-Resource Type	URL
-Hostname	YOUR-WORDPRESS_ENDPOINT
-Path	/
-
-Click TEST.
-Click SAVE 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-                               Congratulations, you're all done with the lab 😄Don't forget to subscribe our YouTube Channel😄
+TASK 8:  Enable monitoring
 
-                                                                 Thanks for watching.!!!!
+
+Navigation Menu -> Kubernetes Engine -> Services and Ingress -> Copy Endpoint's address.
+
+Navigation Menu -> Monitoring -> Uptime Checks -> + CREATE UPTIME CHECK
+
+Title : Wordpress Uptime
+
+Next -> Target
+
+Hostname : Endpoint's address
+
+Path : /
+
+Next -> Next -> Create
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 9:
+
+gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID --member=user:$USER_NAME2 --role=roles/editor
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                           Congratulations, you're all done with the lab 😄 Don't forget to subscribe our YouTube Channel😄
+                                        
+                                                                 Thanks for watching.!
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
