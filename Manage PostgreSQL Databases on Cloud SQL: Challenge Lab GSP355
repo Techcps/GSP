@@ -10,10 +10,10 @@ In the terminal in the new browser window, update the PostgreSQL configuration f
 
 # Download and apply some additions to the PostgreSQL configuration files (to enable pglogical extension)
 
-sudo su - postgres -c "gsutil cp gs://cloud-training/gsp355/pg_hba_append.conf ."
-sudo su - postgres -c "gsutil cp gs://cloud-training/gsp355/postgresql_append.conf ."
-sudo su - postgres -c "cat pg_hba_append.conf >> /etc/postgresql/13/main/pg_hba.conf"
-sudo su - postgres -c "cat postgresql_append.conf >> /etc/postgresql/13/main/postgresql.conf"
+sudo su - postgres -c gsutil cp gscloud-traininggsp918pg_hba_append.conf .
+sudo su - postgres -c gsutil cp gscloud-traininggsp918postgresql_append.conf .
+sudo su - postgres -c cat pg_hba_append.conf  etcpostgresql13mainpg_hba.conf
+sudo su - postgres -c cat postgresql_append.conf  etcpostgresql13mainpostgresql.conf
 sudo systemctl restart postgresql@13-main
 
 
@@ -25,16 +25,19 @@ sudo -E su - postgres
 psql
 
 
-\c postgres;
+psql
+c postgres;
 CREATE EXTENSION pglogical;
-\c orders;
+c orders;
+CREATE EXTENSION pglogical;
+c gmemegen_db;
 CREATE EXTENSION pglogical;
 
 
+CREATE USER techcps PASSWORD 'DMS_1s_cool!';
+ALTER DATABASE orders OWNER TO techcps;
+ALTER ROLE techcps WITH REPLICATION;
 
-CREATE USER :username PASSWORD 'DMS_1s_cool!';
-ALTER DATABASE orders OWNER TO :username;
-ALTER ROLE :username WITH REPLICATION;
 
 
 c orders;
@@ -45,59 +48,82 @@ ALTER TABLE inventory_items ADD PRIMARY KEY (id);
 
 
 
-\c postgres;
-
-GRANT USAGE ON SCHEMA pglogical TO :username;
-GRANT ALL ON SCHEMA pglogical TO :username;
-
-GRANT SELECT ON pglogical.tables TO :username;
-GRANT SELECT ON pglogical.depend TO :username;
-GRANT SELECT ON pglogical.local_node TO :username;
-GRANT SELECT ON pglogical.local_sync_status TO :username;
-GRANT SELECT ON pglogical.node TO :username;
-GRANT SELECT ON pglogical.node_interface TO :username;
-GRANT SELECT ON pglogical.queue TO :username;
-GRANT SELECT ON pglogical.replication_set TO :username;
-GRANT SELECT ON pglogical.replication_set_seq TO :username;
-GRANT SELECT ON pglogical.replication_set_table TO :username;
-GRANT SELECT ON pglogical.sequence_state TO :username;
-GRANT SELECT ON pglogical.subscription TO :username;
-
-\c orders;
-
-GRANT USAGE ON SCHEMA pglogical TO :username;
-GRANT ALL ON SCHEMA pglogical TO :username;
-
-GRANT SELECT ON pglogical.tables TO :username;
-GRANT SELECT ON pglogical.depend TO :username;
-GRANT SELECT ON pglogical.local_node TO :username;
-GRANT SELECT ON pglogical.local_sync_status TO :username;
-GRANT SELECT ON pglogical.node TO :username;
-GRANT SELECT ON pglogical.node_interface TO :username;
-GRANT SELECT ON pglogical.queue TO :username;
-GRANT SELECT ON pglogical.replication_set TO :username;
-GRANT SELECT ON pglogical.replication_set_seq TO :username;
-GRANT SELECT ON pglogical.replication_set_table TO :username;
-GRANT SELECT ON pglogical.sequence_state TO :username;
-GRANT SELECT ON pglogical.subscription TO :username;
-
-GRANT USAGE ON SCHEMA public TO :username;
-GRANT ALL ON SCHEMA public TO :username;
-
-GRANT SELECT ON public.distribution_centers TO :username;
-GRANT SELECT ON public.inventory_items TO :username;
-GRANT SELECT ON public.order_items TO :username;
-GRANT SELECT ON public.products TO :username;
-GRANT SELECT ON public.users TO :username;
-
-ALTER TABLE public.distribution_centers OWNER TO :username;
-ALTER TABLE public.inventory_items OWNER TO :username;
-ALTER TABLE public.order_items OWNER TO :username;
-ALTER TABLE public.products OWNER TO :username;
-ALTER TABLE public.users OWNER TO :username;
+c postgres;
+GRANT USAGE ON SCHEMA pglogical TO techcps;
+GRANT ALL ON SCHEMA pglogical TO techcps;
+GRANT SELECT ON pglogical.tables TO techcps;
+GRANT SELECT ON pglogical.depend TO techcps;
+GRANT SELECT ON pglogical.local_node TO techcps;
+GRANT SELECT ON pglogical.local_sync_status TO techcps;
+GRANT SELECT ON pglogical.node TO techcps;
+GRANT SELECT ON pglogical.node_interface TO techcps;
+GRANT SELECT ON pglogical.queue TO techcps;
+GRANT SELECT ON pglogical.replication_set TO techcps;
+GRANT SELECT ON pglogical.replication_set_seq TO techcps;
+GRANT SELECT ON pglogical.replication_set_table TO techcps;
+GRANT SELECT ON pglogical.sequence_state TO techcps;
+GRANT SELECT ON pglogical.subscription TO techcps;
 
 
-\q
+
+c orders;
+GRANT USAGE ON SCHEMA pglogical TO techcps;
+GRANT ALL ON SCHEMA pglogical TO techcps;
+GRANT SELECT ON pglogical.tables TO techcps;
+GRANT SELECT ON pglogical.depend TO techcps;
+GRANT SELECT ON pglogical.local_node TO techcps;
+GRANT SELECT ON pglogical.local_sync_status TO techcps;
+GRANT SELECT ON pglogical.node TO techcps;
+GRANT SELECT ON pglogical.node_interface TO techcps;
+GRANT SELECT ON pglogical.queue TO techcps;
+GRANT SELECT ON pglogical.replication_set TO techcps;
+GRANT SELECT ON pglogical.replication_set_seq TO techcps;
+GRANT SELECT ON pglogical.replication_set_table TO techcps;
+GRANT SELECT ON pglogical.sequence_state TO techcps;
+GRANT SELECT ON pglogical.subscription TO techcps;
+
+
+GRANT USAGE ON SCHEMA public TO techcps;
+GRANT ALL ON SCHEMA public TO techcps;
+GRANT SELECT ON public.distribution_centers TO techcps;
+GRANT SELECT ON public.inventory_items TO techcps;
+GRANT SELECT ON public.order_items TO techcps;
+GRANT SELECT ON public.products TO techcps;
+GRANT SELECT ON public.users TO techcps;
+
+
+c gmemegen_db;
+GRANT USAGE ON SCHEMA pglogical TO techcps;
+GRANT ALL ON SCHEMA pglogical TO techcps;
+GRANT SELECT ON pglogical.tables TO techcps;
+GRANT SELECT ON pglogical.depend TO techcps;
+GRANT SELECT ON pglogical.local_node TO techcps;
+GRANT SELECT ON pglogical.local_sync_status TO techcps;
+GRANT SELECT ON pglogical.node TO techcps;
+GRANT SELECT ON pglogical.node_interface TO techcps;
+GRANT SELECT ON pglogical.queue TO techcps;
+GRANT SELECT ON pglogical.replication_set TO techcps;
+GRANT SELECT ON pglogical.replication_set_seq TO techcps;
+GRANT SELECT ON pglogical.replication_set_table TO techcps;
+GRANT SELECT ON pglogical.sequence_state TO techcps;
+GRANT SELECT ON pglogical.subscription TO techcps;
+
+
+GRANT USAGE ON SCHEMA public TO techcps;
+GRANT ALL ON SCHEMA public TO techcps;
+GRANT SELECT ON public.meme TO techcps;
+
+c orders;
+dt
+ALTER TABLE public.distribution_centers OWNER TO techcps;
+ALTER TABLE public.inventory_items OWNER TO techcps;
+ALTER TABLE public.order_items OWNER TO techcps;
+ALTER TABLE public.products OWNER TO techcps;
+ALTER TABLE public.users OWNER TO techcps;
+dt
+
+
+q
 exit
 
 
