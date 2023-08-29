@@ -9,11 +9,12 @@ In the terminal in the new browser window, update the PostgreSQL configuration f
 
 # Download and apply some additions to the PostgreSQL configuration files (to enable pglogical extension)
 
-sudo su - postgres -c gsutil cp gscloud-traininggsp918pg_hba_append.conf .
-sudo su - postgres -c gsutil cp gscloud-traininggsp918postgresql_append.conf .
-sudo su - postgres -c cat pg_hba_append.conf  etcpostgresql13mainpg_hba.conf
-sudo su - postgres -c cat postgresql_append.conf  etcpostgresql13mainpostgresql.conf
+sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/pg_hba_append.conf ."
+sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/postgresql_append.conf ."
+sudo su - postgres -c "cat pg_hba_append.conf >> /etc/postgresql/13/main/pg_hba.conf"
+sudo su - postgres -c "cat postgresql_append.conf >> /etc/postgresql/13/main/postgresql.conf"
 sudo systemctl restart postgresql@13-main
+
 
 
 # Apply required privileges to postgres and orders databases
