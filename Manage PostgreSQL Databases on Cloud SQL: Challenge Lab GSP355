@@ -1,6 +1,7 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
 # install the pglogical database extension and jquery
 
 sudo apt install postgresql-13-pglogical
@@ -14,7 +15,6 @@ sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/postgresql_append.co
 sudo su - postgres -c "cat pg_hba_append.conf >> /etc/postgresql/13/main/pg_hba.conf"
 sudo su - postgres -c "cat postgresql_append.conf >> /etc/postgresql/13/main/postgresql.conf"
 sudo systemctl restart postgresql@13-main
-
 
 
 # Apply required privileges to postgres and orders databases
@@ -38,7 +38,7 @@ ALTER ROLE techcps WITH REPLICATION;
 
 
 
-c orders;
+\c orders;
 SELECT column_name FROM information_schema.columns WHERE table_name = 'inventory_items' AND column_name = 'id';
 ALTER TABLE inventory_items ADD PRIMARY KEY (id);
 
@@ -46,7 +46,7 @@ ALTER TABLE inventory_items ADD PRIMARY KEY (id);
 
 
 
-c postgres;
+\c postgres;
 GRANT USAGE ON SCHEMA pglogical TO techcps;
 GRANT ALL ON SCHEMA pglogical TO techcps;
 GRANT SELECT ON pglogical.tables TO techcps;
@@ -64,7 +64,7 @@ GRANT SELECT ON pglogical.subscription TO techcps;
 
 
 
-c orders;
+\c orders;
 GRANT USAGE ON SCHEMA pglogical TO techcps;
 GRANT ALL ON SCHEMA pglogical TO techcps;
 GRANT SELECT ON pglogical.tables TO techcps;
@@ -90,7 +90,7 @@ GRANT SELECT ON public.products TO techcps;
 GRANT SELECT ON public.users TO techcps;
 
 
-c gmemegen_db;
+\c gmemegen_db;
 GRANT USAGE ON SCHEMA pglogical TO techcps;
 GRANT ALL ON SCHEMA pglogical TO techcps;
 GRANT SELECT ON pglogical.tables TO techcps;
@@ -111,17 +111,17 @@ GRANT USAGE ON SCHEMA public TO techcps;
 GRANT ALL ON SCHEMA public TO techcps;
 GRANT SELECT ON public.meme TO techcps;
 
-c orders;
-dt
+\c orders;
+\dt
 ALTER TABLE public.distribution_centers OWNER TO techcps;
 ALTER TABLE public.inventory_items OWNER TO techcps;
 ALTER TABLE public.order_items OWNER TO techcps;
 ALTER TABLE public.products OWNER TO techcps;
 ALTER TABLE public.users OWNER TO techcps;
-dt
+\dt
 
 
-q
+\q
 exit
 
 
