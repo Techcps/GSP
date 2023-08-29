@@ -24,12 +24,13 @@ psql
 
 
 psql
-c postgres;
+\c postgres;
 CREATE EXTENSION pglogical;
-c orders;
+\c orders;
 CREATE EXTENSION pglogical;
-c gmemegen_db;
+\c gmemegen_db;
 CREATE EXTENSION pglogical;
+
 
 
 CREATE USER techcps PASSWORD 'DMS_1s_cool!';
