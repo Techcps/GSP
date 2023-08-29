@@ -3,7 +3,7 @@
 
 # install the pglogical database extension and jquery
 
-sudo apt -y install postgresql-13-pglogical jq
+sudo apt install postgresql-13-pglogical
 
 In the terminal in the new browser window, update the PostgreSQL configuration files
 
