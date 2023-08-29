@@ -18,7 +18,7 @@ sudo systemctl restart postgresql@13-main
 
 # Apply required privileges to postgres and orders databases
 
-sudo -E su - postgres
+sudo su - postgres
 psql
 
 
