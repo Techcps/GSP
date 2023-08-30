@@ -1,0 +1,29 @@
+
+
+git clone --depth 1 https://github.com/GoogleCloudPlatform/training-data-analyst
+ln -s ~/training-data-analyst/quests/develop-apis-apigee ~/develop-apis-apigee
+cd ~/develop-apis-apigee/rest-backend
+cat init-project.sh
+./init-project.sh
+cat init-service.sh
+./init-service.sh
+cat deploy.sh
+./deploy.sh
+export RESTHOST=$(gcloud run services describe simplebank-rest --platform managed --region us-west1 --format 'value(status.url)')
+echo "export RESTHOST=${RESTHOST}" >> ~/.bashrc
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -X GET "${RESTHOST}/_status"
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -H "Content-Type: application/json" -X POST "${RESTHOST}/customers" -d '{"lastName": "Diallo", "firstName": "Temeka", "email": "temeka@example.com"}'
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -X GET "${RESTHOST}/customers/temeka@example.com"
+gcloud firestore import gs://cloud-training/api-dev-quest/firestore/example-data
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -X GET "${RESTHOST}/atms"
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" -X GET "${RESTHOST}/atms/spruce-goose"
+gcloud iam service-accounts create apigee-internal-access \
+--display-name="Service account for internal access by Apigee proxies" \
+--project=${GOOGLE_CLOUD_PROJECT}
+gcloud run services add-iam-policy-binding simplebank-rest \
+--member="serviceAccount:apigee-internal-access@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com" \
+--role=roles/run.invoker --region=us-west1 \
+--project=${GOOGLE_CLOUD_PROJECT}
+gcloud run services describe simplebank-rest --platform managed --region us-west1 --format 'value(status.url)'
+
+
