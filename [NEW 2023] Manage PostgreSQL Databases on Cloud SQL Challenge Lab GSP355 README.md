@@ -1,0 +1,186 @@
+
+# Manage PostgreSQL Databases on Cloud SQL: Challenge Lab [GSP355] 
+* install the pglogical database extension and jquery
+
+```
+sudo apt install postgresql-13-pglogical
+```
+# In the terminal in the new browser window, update the PostgreSQL configuration files
+* Download and apply some additions to the PostgreSQL configuration files (to enable pglogical extension)
+
+```
+sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/pg_hba_append.conf ."
+sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/postgresql_append.conf ."
+sudo su - postgres -c "cat pg_hba_append.conf >> /etc/postgresql/13/main/pg_hba.conf"
+sudo su - postgres -c "cat postgresql_append.conf >> /etc/postgresql/13/main/postgresql.conf"
+sudo systemctl restart postgresql@13-main
+```
+* Apply required privileges to postgres and orders databases
+```
+sudo su - postgres
+psql
+```
+```
+psql
+\c postgres;
+CREATE EXTENSION pglogical;
+\c orders;
+CREATE EXTENSION pglogical;
+\c gmemegen_db;
+CREATE EXTENSION pglogical;
+```
+```
+CREATE USER techcps PASSWORD 'DMS_1s_cool!';
+ALTER DATABASE orders OWNER TO techcps;
+ALTER ROLE techcps WITH REPLICATION;
+
+
+
+\c orders;
+SELECT column_name FROM information_schema.columns WHERE table_name = 'inventory_items' AND column_name = 'id';
+ALTER TABLE inventory_items ADD PRIMARY KEY (id);
+
+
+
+
+
+\c postgres;
+GRANT USAGE ON SCHEMA pglogical TO techcps;
+GRANT ALL ON SCHEMA pglogical TO techcps;
+GRANT SELECT ON pglogical.tables TO techcps;
+GRANT SELECT ON pglogical.depend TO techcps;
+GRANT SELECT ON pglogical.local_node TO techcps;
+GRANT SELECT ON pglogical.local_sync_status TO techcps;
+GRANT SELECT ON pglogical.node TO techcps;
+GRANT SELECT ON pglogical.node_interface TO techcps;
+GRANT SELECT ON pglogical.queue TO techcps;
+GRANT SELECT ON pglogical.replication_set TO techcps;
+GRANT SELECT ON pglogical.replication_set_seq TO techcps;
+GRANT SELECT ON pglogical.replication_set_table TO techcps;
+GRANT SELECT ON pglogical.sequence_state TO techcps;
+GRANT SELECT ON pglogical.subscription TO techcps;
+
+
+
+\c orders;
+GRANT USAGE ON SCHEMA pglogical TO techcps;
+GRANT ALL ON SCHEMA pglogical TO techcps;
+GRANT SELECT ON pglogical.tables TO techcps;
+GRANT SELECT ON pglogical.depend TO techcps;
+GRANT SELECT ON pglogical.local_node TO techcps;
+GRANT SELECT ON pglogical.local_sync_status TO techcps;
+GRANT SELECT ON pglogical.node TO techcps;
+GRANT SELECT ON pglogical.node_interface TO techcps;
+GRANT SELECT ON pglogical.queue TO techcps;
+GRANT SELECT ON pglogical.replication_set TO techcps;
+GRANT SELECT ON pglogical.replication_set_seq TO techcps;
+GRANT SELECT ON pglogical.replication_set_table TO techcps;
+GRANT SELECT ON pglogical.sequence_state TO techcps;
+GRANT SELECT ON pglogical.subscription TO techcps;
+
+
+GRANT USAGE ON SCHEMA public TO techcps;
+GRANT ALL ON SCHEMA public TO techcps;
+GRANT SELECT ON public.distribution_centers TO techcps;
+GRANT SELECT ON public.inventory_items TO techcps;
+GRANT SELECT ON public.order_items TO techcps;
+GRANT SELECT ON public.products TO techcps;
+GRANT SELECT ON public.users TO techcps;
+
+
+\c gmemegen_db;
+GRANT USAGE ON SCHEMA pglogical TO techcps;
+GRANT ALL ON SCHEMA pglogical TO techcps;
+GRANT SELECT ON pglogical.tables TO techcps;
+GRANT SELECT ON pglogical.depend TO techcps;
+GRANT SELECT ON pglogical.local_node TO techcps;
+GRANT SELECT ON pglogical.local_sync_status TO techcps;
+GRANT SELECT ON pglogical.node TO techcps;
+GRANT SELECT ON pglogical.node_interface TO techcps;
+GRANT SELECT ON pglogical.queue TO techcps;
+GRANT SELECT ON pglogical.replication_set TO techcps;
+GRANT SELECT ON pglogical.replication_set_seq TO techcps;
+GRANT SELECT ON pglogical.replication_set_table TO techcps;
+GRANT SELECT ON pglogical.sequence_state TO techcps;
+GRANT SELECT ON pglogical.subscription TO techcps;
+
+
+GRANT USAGE ON SCHEMA public TO techcps;
+GRANT ALL ON SCHEMA public TO techcps;
+GRANT SELECT ON public.meme TO techcps;
+
+\c orders;
+\dt
+ALTER TABLE public.distribution_centers OWNER TO techcps;
+ALTER TABLE public.inventory_items OWNER TO techcps;
+ALTER TABLE public.order_items OWNER TO techcps;
+ALTER TABLE public.products OWNER TO techcps;
+ALTER TABLE public.users OWNER TO techcps;
+\dt
+
+
+\q
+exit
+```
+
+# Task 3. Implement Cloud SQL for PostgreSQL IAM database authentication
+
+* Asking For a password copy and paste [ The password will not visible to you]
+```
+supersecret!
+```
+```
+\c orders;
+```
+* Asking For a password copy and paste [ The password will not visible to you]
+```
+supersecret!
+```
+* Enter your Table Name and Username
+```
+GRANT ALL PRIVILEGES ON TABLE <Table Name> TO "";
+```
+
+```
+\q
+```
+
+# Task 4. Configure and test point-in-time recovery
+```
+date --rfc-3339=seconds
+```
+* Asking For a password copy and paste [ The password will not visible to you]
+```
+supersecret!
+```
+```
+\c orders;
+```
+* Asking For a password copy and paste [ The password will not visible to you]
+```
+supersecret!
+```
+```
+INSERT INTO distribution_centers VALUES(-80.1918,25.7617,'Miami FL',11);
+```
+```
+\q
+```
+```
+gcloud auth login
+```
+* Replace your project id
+```
+gcloud projects get-iam-policy PROJECT_ID
+```
+* Replace your TIMESTAMP
+```
+gcloud sql instances clone INSTANCE_ID  postgres-orders-pitr --point-in-time 'TIMESTAMP'
+  ```
+
+## Congratulations, you're all done with the lab 😄 Don't forget to subscribe my YouTube Channel😄
+
+##  Thanks for watching.!
+
+
+
