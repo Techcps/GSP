@@ -6,7 +6,6 @@
 * In the GCP Console open the Cloud Shell then run the following commands:
 
 ```
-```
 gcloud auth list
 gcloud config list project
 gcloud pubsub topics create export-findings-pubsub-topic
