@@ -12,6 +12,8 @@ gcloud pubsub topics create export-findings-pubsub-topic
 gcloud pubsub subscriptions create export-findings-pubsub-topic-sub --topic export-findings-pubsub-topic
 ```
 
+## Perform using lab instruction.
+
 # Congratulations, you're all done with the lab 😄
 
 # Thanks for watching :)
