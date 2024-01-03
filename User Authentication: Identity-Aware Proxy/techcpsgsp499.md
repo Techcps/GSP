@@ -35,7 +35,7 @@ cat details.json
 
 ## Provide your confirmation type: Y and Enter (follow same process 3 times)
 
-# Task 1: Under
+# Under: Task 1
 *  "Restrict access with IAP" perform using lab instructions
 *  "Test that IAP is turned on" perform using lab instructions
 
