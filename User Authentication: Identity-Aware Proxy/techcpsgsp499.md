@@ -3,7 +3,6 @@
 
 # Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps)
 
-
 ```
 gcloud auth list
 gcloud config list project
@@ -31,10 +30,14 @@ EOF
 cat details.json
 ```
 # Note:
-## Numeric value choose: 10 then Enter
+## Numeric choice value - Go to Task 1:
+* Point No.2 and Select a region value using lab instructions
+
 ## Provide your confirmation type: Y and Enter (follow same process 3 times)
 
-# Task 1: Under "Restrict access with IAP" perform using lab instructions
+# Task 1: Under
+*  "Restrict access with IAP" perform using lab instructions
+*  "Test that IAP is turned on" perform using lab instructions
 
 ## Congratulations, you're all done with the lab 😄
 
