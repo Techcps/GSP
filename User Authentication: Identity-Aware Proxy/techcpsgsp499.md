@@ -30,6 +30,10 @@ cat > details.json << EOF
 EOF
 cat details.json
 ```
+# Note:
+* Numeric value choose 10 then Enter
+* Provide your confirmation type: Y and Enter (follow same process 3 times)
+
 ## Task 1: Under "Restrict access with IAP" perform using lab instructions
 
 ## Congratulations, you're all done with the lab 😄
