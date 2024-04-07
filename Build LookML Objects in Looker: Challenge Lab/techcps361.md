@@ -139,7 +139,7 @@ always_filter: {
 # Task 4. Apply a datagroup to an Explore
 
 ## training_ecommerce.model
-## Remove any filters you created from the previous section & datagroup - line 18-33
+## Remove any filters you created from the previous section & datagroup - line 18-34
 ## Add this code before the order_item explore (Make sure to change the value) - line 8-11
 
 ```
@@ -149,6 +149,9 @@ max_cache_age: "VALUE hours"
 }
 ```
 ## Replace below code with line 13
+```
+persist_with: order_items_challenge_datagroup
+```
 ## Save the changes, Validate LooML and then Commit for deploying into production
 
 
