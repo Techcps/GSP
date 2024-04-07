@@ -154,5 +154,6 @@ persist_with: order_items_challenge_datagroup
 ```
 ## Save the changes, Validate LooML and then Commit for deploying into production
 
+## Congratulations, you're all done with the lab 😄
 
-
+# Thanks for watching :)
