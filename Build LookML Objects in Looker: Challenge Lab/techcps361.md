@@ -67,12 +67,16 @@ relationship: many_to_one
 # Task 2. Create a persistent derived table
 ## Clickon explore > Order Items > Under order items select
 > Order ID
+
 > User ID
+
 > Total Revenue
 
 ## From Users select
 > Age
+
 > City
+
 > State
 
 ## Click on Run then gear icon just beside of run option
