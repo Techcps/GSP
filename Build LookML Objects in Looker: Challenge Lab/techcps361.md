@@ -12,44 +12,42 @@
 order_items_challenge
 ```
 ```
-iew: order_items_challenge {
-           sql_table_name: `cloud-training-demos.looker_ecomm.order_items’  ;;
-           drill_fields: [order_item_id]
-           dimension: order_item_id {
-           primary_key: yes
-           type: number
-           sql: ${TABLE}.id ;;
-         }
-       
-         dimension: is_search_source {
-            type: yesno
-            sql: ${users.traffic_source} = "Search" ;;
-         }
- 
- 
-         measure: sales_from_complete_search_users {
-              type: sum
-             sql: ${TABLE}.sale_price ;;
-             filters: [is_search_source: "Yes", order_items.status: "Complete"]
-        }
- 
- 
-          measure: total_gross_margin {
-                type: sum
-                sql: ${TABLE}.sale_price - ${inventory_items.cost} ;;
-         }
- 
- 
-         dimension: return_days {
-            type: number
-           sql: DATE_DIFF(${order_items.delivered_date}, ${order_items.returned_date}, DAY);;
-        }
-
-        dimension: order_id {
-        type: number
-        sql: ${TABLE}.order_id ;;
-        }
-
+view: order_items_challenge {
+  sql_table_name: `cloud-training-demos.looker_ecomm.order_items’  ;;
+  drill_fields: [order_item_id]
+  dimension: order_item_id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+  
+  dimension: is_search_source {
+    type: yesno
+    sql: ${users.traffic_source} = "Search" ;;
+  }
+  
+  
+  measure: sales_from_complete_search_users {
+    type: sum
+    sql: ${TABLE}.sale_price ;;
+    filters: [is_search_source: "Yes", order_items.status: "Complete"]
+  }
+  
+  
+  measure: total_gross_margin {
+    type: sum
+    sql: ${TABLE}.sale_price - ${inventory_items.cost} ;;
+  }
+  
+  
+  dimension: return_days {
+    type: number
+    sql: DATE_DIFF(${order_items.delivered_date}, ${order_items.returned_date}, DAY);;
+  }
+  dimension: order_id {
+    type: number
+    sql: ${TABLE}.order_id ;;
+  }
 }
 ```
 ## Save changes and click on validate the LookML
