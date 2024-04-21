@@ -1,4 +1,5 @@
 
+gcloud auth list
 
 bq query --use_legacy_sql=false "SELECT sum(cumulative_confirmed) as total_cases_worldwide FROM \`bigquery-public-data.covid19_open_data.covid19_open_data\` WHERE date='$DATE_CP1'"
 
