@@ -1,49 +1,49 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Set Up a Google Cloud Network: Challenge Lab [GSP314](https://www.cloudskillsboost.google/focuses/10417?parent=catalog)
 
+# Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps) & join our [WhatsApp Channel](https://whatsapp.com/channel/0029Va9nne147XeIFkXYv71A)
 
-In the terminal in the new browser window, install the pglogical database extension:
-
+## Install the pglogical database extension:
+```
 sudo apt install postgresql-13-pglogical
+```
+## Download and apply some additions to the PostgreSQL configuration files (to enable pglogical extension) and restart the postgresql service:
 
-
-Download and apply some additions to the PostgreSQL configuration files (to enable pglogical extension) and restart the postgresql service:
-
+```
 sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/pg_hba_append.conf ."
 sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/postgresql_append.conf ."
 sudo su - postgres -c "cat pg_hba_append.conf >> /etc/postgresql/13/main/pg_hba.conf"
 sudo su - postgres -c "cat postgresql_append.conf >> /etc/postgresql/13/main/postgresql.conf"
 sudo systemctl restart postgresql@13-main
+```
 
+## 3 Launch the psql tool:
 
-3 Launch the psql tool:
-
+```
 sudo su - postgres
 psql
+```
 
+## Add the pglogical database extension:
 
-
-4Add the pglogical database extension to the postgres, orders and gmemegen_db databases.
-
-
+```
 \c postgres;
 CREATE EXTENSION pglogical;
 \c orders;
 CREATE EXTENSION pglogical;
 \c gmemegen_db;
 CREATE EXTENSION pglogical;
+```
 
+## Tap here to open the [online word replacer link](http://www.unit-conversion.info/texttools/replace-text/)
 
-—--------------------------------------------------------—--------------------------------------------------------—--------------------------------------------------------—--------------------------------------------------------
+## Create the database migration user
 
-
-
-Create the database migration user
-
-
+```
 CREATE USER migration_admin PASSWORD 'DMS_1s_cool!';
 ALTER DATABASE orders OWNER TO migration_admin;
 ALTER ROLE migration_admin WITH REPLICATION;
+
 
 
 \c postgres;
@@ -91,6 +91,7 @@ GRANT SELECT ON public.products TO migration_admin;
 GRANT SELECT ON public.users TO migration_admin;
 
 
+
 \c gmemegen_db;
 GRANT USAGE ON SCHEMA pglogical TO migration_admin;
 GRANT ALL ON SCHEMA pglogical TO migration_admin;
@@ -114,6 +115,7 @@ GRANT ALL ON SCHEMA public TO migration_admin;
 GRANT SELECT ON public.meme TO migration_admin;
 
 
+
 \c orders;
 \dt
 ALTER TABLE public.distribution_centers OWNER TO migration_admin;
@@ -129,51 +131,44 @@ ALTER TABLE public.inventory_items ADD PRIMARY KEY(id);
 \q 
 exit
 
+```
 
+## Tap here to open the [Online Notepad](https://onlinenotepad.org/notepad)
 
-—--------------------------------------------------------—--------------------------------------------------------—--------------------------------------------------------—---------
-
-
-
-
+```
 export VPC_NAME=
 
-export SUBNET1=
+export SUBNET_1=
 
-export REGION1=
+export REGION_1=
 
-export SUBNET2=
+export SUBNET_2=
 
-export REGION2=
+export REGION_2=
 
-export RULE_NAME1=
+export RULE_CP1=
 
-export RULE_NAME2=
+export RULE_CP2=
 
-export RULE_NAME3=
+export RULE_CP3=
+```
 
+```
+gcloud compute networks create $VPC_NAME --project=$DEVSHELL_PROJECT_ID --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
 
+gcloud compute networks subnets create $SUBNET_1 --project=$DEVSHELL_PROJECT_ID --range=10.10.10.0/24 --stack-type=IPV4_ONLY --network=$VPC_NAME --region=$REGION_1
 
-gcloud compute networks create $VPC_NAME --project=$DEVSHELL_PROJECT_ID --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional && gcloud compute networks subnets create $SUBNET1 --project=$DEVSHELL_PROJECT_ID --range=10.10.10.0/24 --stack-type=IPV4_ONLY --network=$VPC_NAME --region=$REGION1 && gcloud compute networks subnets create $SUBNET2 --project=$DEVSHELL_PROJECT_ID --range=10.10.20.0/24 --stack-type=IPV4_ONLY --network=$VPC_NAME --region=$REGION2
+gcloud compute networks subnets create $SUBNET_2 --project=$DEVSHELL_PROJECT_ID --range=10.10.20.0/24 --stack-type=IPV4_ONLY --network=$VPC_NAME --region=$REGION_2
 
-gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create $RULE_NAME1 --direction=INGRESS --priority=65535 --network=$VPC_NAME --action=ALLOW --rules=tcp:22 --source-ranges=0.0.0.0/0
+gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create $RULE_CP1 --direction=INGRESS --priority=65535 --network=$VPC_NAME --action=ALLOW --rules=tcp:22 --source-ranges=0.0.0.0/0
 
-gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create $RULE_NAME2 --direction=INGRESS --priority=65535 --network=$VPC_NAME --action=ALLOW --rules=tcp:3389 --source-ranges=0.0.0.0/0
+gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create $RULE_CP2 --direction=INGRESS --priority=65535 --network=$VPC_NAME --action=ALLOW --rules=tcp:3389 --source-ranges=0.0.0.0/0
 
-gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create $RULE_NAME3 --direction=INGRESS --priority=65535 --network=$VPC_NAME --action=ALLOW --rules=icmp --source-ranges=0.0.0.0/0
+gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create $RULE_CP3 --direction=INGRESS --priority=65535 --network=$VPC_NAME --action=ALLOW --rules=icmp --source-ranges=0.0.0.0/0
 
-
-
-
-
-
-
-
+```
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Congratulations, you're all done with the lab 😄
 
-                         Congratulations, you're all done with the lab 😄  Don't forget to subscribe our YouTube Channel😄
-                                        
-                                                                 Thank You!!!!
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Thanks for watching :)
