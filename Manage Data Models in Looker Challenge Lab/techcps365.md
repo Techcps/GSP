@@ -1,8 +1,14 @@
-
 # Manage Data Models in Looker: Challenge Lab [GSP365]
 
+# Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps) & join our [WhatsApp Channel](https://whatsapp.com/channel/0029Va9nne147XeIFkXYv71A)
+
+## First turn on the Development Mode
+
+![Techcps](https://github.com/Techcps/GSP/assets/104138529/eafb8aa6-b295-4ddd-8239-93aa59662e1a)
+
+
 # Task 1. Create LookML objects
-* Go to order_items.view and add the following code Line No 128
+### Go to order_items.view and add the following code Line No 128
 
 ```
 dimension: profit {
@@ -22,8 +28,7 @@ value_format_name: usd
 }
 ```
 
-* Go to training_ecommerce.model add below lines of code. [Make sure to change the NAME_DATAGROUP]
-
+### Go to training_ecommerce.model add below lines of code. [Make sure to change the NAME_DATAGROUP]
 
 ```
 datagroup: NAME_DATAGROUP {
@@ -35,7 +40,7 @@ persist_with: NAME_DATAGROUP
 ```
 
 # Task 2. Create and fix a refinement with an aggregate table
-* Go to training_ecommerce.model add below lines of code. [Make sure to change the NAME_DATAGROUP]
+### Go to training_ecommerce.model add below lines of code. [Make sure to change the NAME_DATAGROUP]
 
 ```
 explore: +order_items {
@@ -54,7 +59,7 @@ increment_key: "created_date"
 ```
 
 # Task 3. Extend a view
-* Remove all default code and add this code: [Make sure to change the VIEW_NAME:]
+### Remove all default code and add this code: [Make sure to change the VIEW_NAME:]
 
 ```
 view: VIEW_NAME {
@@ -93,7 +98,7 @@ sql: ${TABLE}.longitude ;;
 }
 ```
 
-* Go to users.view add this code
+### Go to users.view add this code
 
 ```
 view: users {
@@ -197,7 +202,7 @@ view: users {
 ```
 
 # Task 4. Group similar fields in views:
-* Go to user files
+### Go to user.views files
 
 ```
 view: users {
@@ -304,7 +309,7 @@ view: users {
 }
 ```
 
-* Go to Product file and add this following code
+## Go to Product file and add this following code
 
 ```
 view: products {
@@ -371,9 +376,5 @@ view: products {
 ```
 
 ## Congratulations, you're all done with the lab 😄
-## If you consider that the video helped you to complete your lab, so please do like and subscribe
 ## Thanks for watching :)
-
-
-
 
