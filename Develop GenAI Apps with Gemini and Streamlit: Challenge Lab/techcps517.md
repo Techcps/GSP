@@ -22,6 +22,8 @@ sudo chmod +x techcps1.sh
 ./techcps1.sh
 ```
 
+## Click on the link & Test the app from video instructions
+
 ## Congratulations, you're all done with the lab 😄
 
 # Thanks for watching :)
