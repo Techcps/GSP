@@ -40,6 +40,12 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
   --role="roles/artifactregistry.reader"
 
 
+
+sleep 15
+
+#!/bin/bash
+
+deploy_function() {
   gcloud functions deploy process-invoices \
   --region=${REGION} \
   --entry-point=process_invoice \
@@ -50,4 +56,17 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
   --env-vars-file=cloud-functions/process-invoices/.env.yaml \
   --trigger-resource=gs://${PROJECT_ID}-input-invoices \
   --trigger-event=google.storage.object.finalize
+}
+
+deploy_success=false
+
+while [ "$deploy_success" = false ]; do
+  if deploy_function; then
+    echo "Function deployed successfully.(https://www.youtube.com/@techcps)"
+    deploy_success=true
+  else
+    echo "Deployment Retrying, please subscribe to techcps (https://www.youtube.com/@techcps).."
+    sleep 10
+  fi
+done
 
