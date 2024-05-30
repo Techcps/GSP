@@ -1,33 +1,12 @@
 
-# User Authentication: Identity-Aware Proxy [GSP499]
+# Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps) & join our [WhatsApp Community](https://whatsapp.com/channel/0029Va9nne147XeIFkXYv71A)
 
-# Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps)
+# GSP499: [Here is the updated solution for this lab](https://youtu.be/BMKPS7EeD0A)
 
 ```
-gcloud auth list
-gcloud config list project
-gsutil cp gs://spls/gsp499/user-authentication-with-iap.zip .
-unzip user-authentication-with-iap.zip
-cd user-authentication-with-iap
-gcloud services disable appengineflex.googleapis.com
-cd 1-HelloWorld
-gcloud app deploy
-cd ~/user-authentication-with-iap/2-HelloUser
-gcloud app deploy
-cd ~/user-authentication-with-iap/3-HelloVerifiedUser
-gcloud app deploy
-LINK=$(gcloud app browse)
-LINKU=${LINK#https://}
-cat > details.json << EOF
-{
-  App name: IAP Example
-  Application home page: $LINK
-  Application privacy Policy link: $LINK/privacy
-  Authorized domains: $LINKU
-  Developer Contact Information: techcps@gmail.com
-}
-EOF
-cat details.json
+curl -LO raw.githubusercontent.com/Techcps/GSP/master/User%20Authentication%3A%20Identity-Aware%20Proxy/techcps499.sh
+sudo chmod +x techcps499.sh
+./techcps499.sh
 ```
 # Note:
 ## Numeric choice value - Go to Task 1:
