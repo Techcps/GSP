@@ -49,7 +49,7 @@ deploy_function() {
   gcloud functions deploy process-invoices \
   --region=${REGION} \
   --entry-point=process_invoice \
-  --runtime=python39 \
+  --runtime=python310 \
   --service-account=${PROJECT_ID}@appspot.gserviceaccount.com \
   --source=cloud-functions/process-invoices \
   --timeout=400 \
