@@ -18,7 +18,7 @@ export ZONE=
 ```
 
 ```
-curl -LO raw.githubusercontent.com/Techcps/GSP-Short-Trick/master/Build%20and%20Secure%20Networks%20in%20Google%20Cloud:%20Challenge%20Lab/techcps322.sh
+curl -LO raw.githubusercontent.com/Techcps/GSP/master/Build%20and%20Secure%20Networks%20in%20Google%20Cloud:%20Challenge%20Lab/techcps322.sh
 sudo chmod +x techcps322.sh
 ./techcps322.sh
 ```
