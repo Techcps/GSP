@@ -1,3 +1,4 @@
+
 cd 7_Advanced_Streaming_Analytics/labs
 cd src/main/java/com/mypackage/pipeline/
 
@@ -271,7 +272,7 @@ cd $BASE_DIR
 
 
 export PROJECT_ID=$(gcloud config get-value project)
-export REGION="REGION"
+
 export BUCKET=gs://${PROJECT_ID}
 export PIPELINE_FOLDER=${BUCKET}
 export MAIN_CLASS_NAME=com.mypackage.pipeline.StreamingMinuteTrafficPipeline
@@ -297,6 +298,7 @@ mvn compile exec:java \
 --allowedLateness=${ALLOWED_LATENESS} \
 --outputTableName=${OUTPUT_TABLE_NAME} \
 --deadletterBucket=${DEADLETTER_BUCKET}"
+
 
 
 bash generate_streaming_events.sh true
