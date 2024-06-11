@@ -1,9 +1,4 @@
-
-
-
-# # Change directory into the lab
 cd 7_Advanced_Streaming_Analytics/labs
-
 cd src/main/java/com/mypackage/pipeline/
 
 cat > StreamingMinuteTrafficPipeline.java <<'EOF_CP'
