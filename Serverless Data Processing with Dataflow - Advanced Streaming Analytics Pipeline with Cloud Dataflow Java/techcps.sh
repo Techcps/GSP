@@ -314,6 +314,19 @@ export PROJECT_ID=$(gcloud config get-value project)
 export BUCKET=gs://${PROJECT_ID}/deadletter
 
 gsutil ls $BUCKET
-gsutil cat $BUCKET/*/*
+
+#!/bin/bash
+
+while true; do
+    gsutil cat $BUCKET/*/*
+    
+    if [ $? -eq 0 ]; then
+        echo "Command executed successfully."
+        break
+    else
+        echo "Retrying, Please like & subscribe to techcps https://www.youtube.com/@techcps.."
+    fi
+    sleep 5
+done
 
 
