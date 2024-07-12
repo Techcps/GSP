@@ -26,8 +26,8 @@ def generate_text(project_id: str, location: str) -> str:
 
 # --------  Important: Variable declaration  --------
 
-project_id = "qwiklabs-gcp-00-111420898d2f"
-location = "us-west1"
+project_id = "$DEVSHELL_PROJECT_ID"
+location = "$REGION"
 
 #  --------   Call the Function  --------
 
@@ -37,5 +37,4 @@ EOF_CP
 
 
 /usr/bin/python3 /home/student/genai.py
-
 
