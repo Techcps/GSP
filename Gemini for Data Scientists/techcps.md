@@ -115,7 +115,7 @@ plt.title('Attribute grouped by K-means cluster')
 # Show the plot
 plt.show()
 ```
-# 🚨 Note: If you're facing any kind of error then re-run the all above query
+## 🚨 Note: If you're facing any kind of error then re-run the all above query
 
 # 🚨 Generate insights from the results of the model
 
