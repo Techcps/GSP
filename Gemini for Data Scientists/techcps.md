@@ -32,6 +32,8 @@ from bigframes.ml.model_selection import train_test_split
 ```
 
 ## 🚨Query 2
+## 🚨Set your Project I'd and Location Name
+
 ```
 project_id = 'qwiklabs-gcp-01-e8e9dc578f3c'
 dataset_name = "ecommerce"
