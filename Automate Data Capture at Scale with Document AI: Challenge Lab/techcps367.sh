@@ -4,10 +4,26 @@ export PROJECT_ID=$(gcloud config get-value core/project)
 
 gcloud services enable documentai.googleapis.com --project $DEVSHELL_PROJECT_ID
 
+sleep 10
+
 
   mkdir ./document-ai-challenge
   gsutil -m cp -r gs://spls/gsp367/* \
     ~/document-ai-challenge/
+
+
+
+
+ACCESS_CP=$(gcloud auth application-default print-access-token)
+
+curl -X POST \
+  -H "Authorization: Bearer $ACCESS_CP" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "display_name": "'"$PROCESSOR"'",
+    "type": "FORM_PARSER_PROCESSOR"
+  }' \
+  "https://documentai.googleapis.com/v1/projects/$PROJECT_ID/locations/us/processors"
 
 
 gsutil mb -c standard -l $REGION -b on gs://$PROJECT_ID-input-invoices
@@ -15,6 +31,8 @@ gsutil mb -c standard -l $REGION -b on gs://$PROJECT_ID-input-invoices
 gsutil mb -c standard -l $REGION -b on gs://$PROJECT_ID-output-invoices
 
 gsutil mb -c standard -l $REGION -b on gs://$PROJECT_ID-archived-invoices
+
+
 
 
 bq --location=US mk  -d \
@@ -40,6 +58,8 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
   --role="roles/artifactregistry.reader"
 
 
+export CLOUD_FUNCTION_LOCATION=$REGION
+
 
 sleep 15
 
@@ -47,15 +67,15 @@ sleep 15
 
 deploy_function() {
   gcloud functions deploy process-invoices \
-  --region=${REGION} \
+  --region=${CLOUD_FUNCTION_LOCATION} \
   --entry-point=process_invoice \
-  --runtime=python310 \
+  --runtime=python39 \
   --service-account=${PROJECT_ID}@appspot.gserviceaccount.com \
   --source=cloud-functions/process-invoices \
   --timeout=400 \
   --env-vars-file=cloud-functions/process-invoices/.env.yaml \
   --trigger-resource=gs://${PROJECT_ID}-input-invoices \
-  --trigger-event=google.storage.object.finalize
+  --trigger-event=google.storage.object.finalize --no-gen2
 }
 
 deploy_success=false
@@ -69,4 +89,5 @@ while [ "$deploy_success" = false ]; do
     sleep 10
   fi
 done
+
 
