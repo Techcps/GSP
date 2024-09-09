@@ -1,5 +1,4 @@
-
-
+```
 connection: "bigquery_public_data_looker"
 
 # include all the views
@@ -69,4 +68,4 @@ explore: events {
     relationship: many_to_one
   }
 }
-
+```
