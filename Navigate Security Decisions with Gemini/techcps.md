@@ -19,6 +19,8 @@ sudo chmod +x techcps.sh
 ./techcps.sh
 ```
 
+## 🚀 Open this link [Click Here](https://console.cloud.google.com/kubernetes/list/overview?referrer=search&project=)
+
 ---
 ### Congratulations, you're all done with the lab 😄
 ---
