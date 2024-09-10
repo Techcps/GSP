@@ -5,7 +5,7 @@
 
 ---
 
-🚨Export the REGION name correctly:
+## 🚨 Export the REGION name correctly:
 
 ```
 export REGION=
