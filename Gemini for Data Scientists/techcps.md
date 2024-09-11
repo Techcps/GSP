@@ -1,6 +1,9 @@
 
-# Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps) & join our [WhatsApp Community](https://whatsapp.com/channel/0029Va9nne147XeIFkXYv71A)
+## 💡 Lab Link: [Gemini for Data Scientists](https://www.cloudskillsboost.google/focuses/80990?parent=catalog)
 
+## 🚀 Lab Solution [Watch Here](https://youtu.be/edZnP0lbg64)
+
+---
 
 ## 🚨Export the REGION name correctly:
 
@@ -18,6 +21,8 @@ sudo chmod +x techcps.sh
 
 ## 🚨 Check your progress on Task 1-2 then move forward to the next task
 
+---
+
 # 🚨Build the Python Notebook
 
 ## 🚨Query 1
@@ -30,6 +35,7 @@ from vertexai.language_models._language_models import TextGenerationModel
 from bigframes.ml.cluster import KMeans
 from bigframes.ml.model_selection import train_test_split
 ```
+---
 
 ## 🚨Query 2
 ## 🚨Set your Project I'd and Location Name
@@ -43,6 +49,7 @@ location = "us-central1"
 client = bigquery.Client(project=project_id)
 aiplatform.init(project=project_id, location=location)
 ```
+---
 
 ## 🚨Query 3
 ```
@@ -66,6 +73,7 @@ SELECT
   )
 GROUP BY user_id;
 ```
+---
 
 ## 🚨Query 4
 ```
@@ -74,6 +82,7 @@ GROUP BY user_id;
 df = bpd.read_gbq(f"{project_id}.{dataset_name}.{table_name}")
 df.head(10)
 ```
+---
 
 ## 🚨Query 5
 ```
@@ -84,6 +93,7 @@ kmeans = KMeans(n_clusters=5)
 kmeans.fit(df_train)
 kmeans.to_gbq(model_name=f"{project_id}.{dataset_name}.{model_name}", replace=True)
 ```
+---
 
 ## 🚨Query 6
 ```
@@ -93,9 +103,10 @@ predictions_df = kmeans.predict(df)
 predictions_df.head(10)
 ```
 
-
 # 🚨 Now below query will take around 20-25 minutes to completed
 > Just wait and watch & Make aure your laptop will not go for sleep
+
+---
 
 ## 🚨Query 7
 ```
@@ -116,7 +127,7 @@ plt.title('Attribute grouped by K-means cluster')
 plt.show()
 ```
 ## 🚨 Note: If you're facing any kind of error then re-run the all above query
-
+---
 # 🚨 Generate insights from the results of the model
 
 ## 🚨Query 1
@@ -142,6 +153,7 @@ ORDER BY centroid_id
 df_centroid = client.query(query).to_dataframe()
 df_centroid.head()
 ```
+---
 
 ## 🚨Query 2
 ```
@@ -156,6 +168,7 @@ for i, row in df_query.iterrows():
 cluster_info = (str.join("\n", cluster_info))
 print(cluster_info)
 ```
+---
 
 ## 🚨Query 3
 ```
@@ -174,6 +187,8 @@ For each Cluster:
 """
 ```
 
+---
+
 ## 🚨Query 4
 ```
 #prompt:  Use the Vertex AI language_models API to call the PaLM2 text-bison model and generate a marketing campaign using the variable prompt. Use the following model settings: max_output_tokens=1024, temperature=0.4
@@ -182,7 +197,27 @@ model = TextGenerationModel.from_pretrained("text-bison")
 response = model.predict(prompt, max_output_tokens=1024, temperature=0.4)
 print(response.text)
 ```
+---
 
-## Congratulations, you're all done with the lab 😄
 
-# Thanks for watching :)
+### Congratulations, you're all done with the lab 😄
+
+---
+
+### 🌐 Join our Community
+
+- **Join our [Discussion Group](https://t.me/Techcpschat)** <img src="https://github.com/user-attachments/assets/a4a4b767-151c-461d-bca1-da6d4c0cd68a" alt="icon" width="25" height="25">
+- **Please like share & subscribe to [Techcps](https://www.youtube.com/@techcps)** <img src="https://github.com/user-attachments/assets/6ee41001-c795-467c-8d96-06b56c246b9c" alt="icon" width="25" height="25">
+- **Join our [WhatsApp Community](https://whatsapp.com/channel/0029Va9nne147XeIFkXYv71A)** <img src="https://github.com/user-attachments/assets/aa10b8b2-5424-40bc-8911-7969f29f6dae" alt="icon" width="25" height="25">
+- **Join our [Telegram Channel](https://t.me/Techcps)** <img src="https://github.com/user-attachments/assets/a4a4b767-151c-461d-bca1-da6d4c0cd68a" alt="icon" width="25" height="25">
+- **Follow us on [LinkedIn](https://www.linkedin.com/company/techcps/)** <img src="https://github.com/user-attachments/assets/b9da471b-2f46-4d39-bea9-acdb3b3a23b0" alt="icon" width="25" height="25">
+
+### Thanks for watching and stay connected :)
+
+---
+
+### 🚨NOTE: copyright by Google Cloud
+- **This script doesn't belong to this page, it has been edited and shared for the purpose of Educational. DM for credit or removal request (no copyright intended) ©All rights and credits for the original content belong to Google Cloud.**
+- **Credit to the respective owner [Google Cloud Skill Boost website](https://www.cloudskillsboost.google/)** 🙏
+
+---
