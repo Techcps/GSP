@@ -14,8 +14,11 @@ TASK 3:
 
 
 gcloud config set deploy/region $REGION
+
 cp clouddeploy-config/delivery-pipeline.yaml.template clouddeploy-config/delivery-pipeline.yaml
+
 sed -i "s/targetId: staging/targetId: cd-staging/" clouddeploy-config/delivery-pipeline.yaml
+sed -i "s/targetId: staging/targetId: cd-staging/" clouddeploy-config/
 sed -i "s/targetId: prod/targetId: cd-production/" clouddeploy-config/delivery-pipeline.yaml
 sed -i "/targetId: test/d" clouddeploy-config/delivery-pipeline.yaml
 gcloud beta deploy apply --file=clouddeploy-config/delivery-pipeline.yaml
