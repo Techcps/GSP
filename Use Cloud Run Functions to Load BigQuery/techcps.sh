@@ -6,27 +6,24 @@ export PROJECT_ID=$(gcloud config get-value project)
 
 export PROJECT_ID=$DEVSHELL_PROJECT_ID
 
-ZONE="$(gcloud compute instances list --project=$DEVSHELL_PROJECT_ID --format='value(ZONE)' | head -n 1)"
-
-export REGION=${ZONE%-*}
+gcloud compute networks subnets update default --region=$REGION --enable-private-ip-google-access
 
 gsutil mb -p  $PROJECT_ID gs://$PROJECT_ID
+
+gsutil mb -p  $PROJECT_ID gs://$PROJECT_ID-bqtemp
 
 bq mk -d  loadavro
 
 echo "export REGION=$REGION" > techcps1.sh
-echo "export PROJECT_ID=$DEVSHELL_PROJECT_ID" >> techcps1.sh
+echo "export PROJECT_ID=$PROJECT_ID" >> techcps1.sh
 
 source techcps1.sh
 
 cat > cp.sh <<'EOF_CP'
 source /tmp/techcps1.sh
 
+
 gcloud config set functions/region $REGION
-
-gcloud services disable cloudfunctions.googleapis.com
-
-gcloud services enable cloudfunctions.googleapis.com
 
 cat > index.js <<EOF
 /**
@@ -76,6 +73,12 @@ exports.loadBigQueryFromAvro = async (event, context) => {
 
 EOF
 
+gcloud services disable cloudfunctions.googleapis.com
+
+gcloud services enable cloudfunctions.googleapis.com
+
+sleep 15
+
 gcloud projects add-iam-policy-binding $PROJECT_ID \
 --member="serviceAccount:$PROJECT_ID@appspot.gserviceaccount.com" \
 --role="roles/artifactregistry.reader"
@@ -100,10 +103,8 @@ gcloud storage cp campaigns.avro gs://$PROJECT_ID
 EOF_CP
 
 
-gcloud compute scp techcps1.sh lab-vm:/tmp --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet
+gcloud compute scp techcps.sh lab-vm:/tmp --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet
 
 gcloud compute scp cp.sh lab-vm:/tmp --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet
 
 gcloud compute ssh lab-vm --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet --command="bash /tmp/cp.sh"
-
-
