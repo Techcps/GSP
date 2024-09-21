@@ -10,12 +10,18 @@ ZONE="$(gcloud compute instances list --project=$DEVSHELL_PROJECT_ID --format='v
 
 export REGION=${ZONE%-*}
 
+gsutil mb -p  $PROJECT_ID gs://$PROJECT_ID
+
+bq mk -d  loadavro
+
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+--member="serviceAccount:$PROJECT_ID@appspot.gserviceaccount.com" \
+--role="roles/artifactregistry.reader"
+
 echo "export REGION=$REGION" > techcps1.sh
 echo "export PROJECT_ID=$DEVSHELL_PROJECT_ID" >> techcps1.sh
 
-
 source techcps1.sh
-
 
 cat > cp.sh <<'EOF_CP'
 source /tmp/techcps1.sh
@@ -74,13 +80,6 @@ exports.loadBigQueryFromAvro = async (event, context) => {
 
 EOF
 
-gsutil mb -p  $DEVSHELL_PROJECT_ID gs://$DEVSHELL_PROJECT_ID
-
-bq mk -d  loadavro
-
-gcloud projects add-iam-policy-binding $PROJECT_ID \
---member="serviceAccount:$PROJECT_ID@appspot.gserviceaccount.com" \
---role="roles/artifactregistry.reader"
 
 npm install @google-cloud/storage @google-cloud/bigquery
 
