@@ -17,15 +17,15 @@ gsutil mb -p  $PROJECT_ID gs://$PROJECT_ID-bqtemp
 
 bq mk -d  loadavro
 
-echo "export REGION=$REGION" > techcps.sh
-echo "export PROJECT_ID=$DEVSHELL_PROJECT_ID" >> techcps.sh
+echo "export REGION=$REGION" > techcps1.sh
+echo "export PROJECT_ID=$DEVSHELL_PROJECT_ID" >> techcps1.sh
 
 
-source techcps.sh
+source techcps1.sh
 
 
 cat > cp.sh <<'EOF_CP'
-source /tmp/techcps.sh
+source /tmp/techcps1.sh
 
 gcloud config set functions/region $REGION
 
@@ -113,7 +113,7 @@ bq query \
 EOF_CP
 
 
-gcloud compute scp techcps.sh lab-vm:/tmp --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet
+gcloud compute scp techcps1.sh lab-vm:/tmp --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet
 
 gcloud compute scp cp.sh lab-vm:/tmp --project=$DEVSHELL_PROJECT_ID --zone=$ZONE --quiet
 
