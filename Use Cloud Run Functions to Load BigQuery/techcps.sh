@@ -106,10 +106,6 @@ sleep 30
 
 gcloud storage cp campaigns.avro gs://$PROJECT_ID
 
-bq query \
- --use_legacy_sql=false \
- 'SELECT * FROM `loadavro.campaigns`;'
-
 EOF_CP
 
 
