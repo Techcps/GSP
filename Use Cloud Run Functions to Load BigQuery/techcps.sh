@@ -10,13 +10,6 @@ ZONE="$(gcloud compute instances list --project=$DEVSHELL_PROJECT_ID --format='v
 
 export REGION=${ZONE%-*}
 
-
-gsutil mb -p  $PROJECT_ID gs://$PROJECT_ID
-
-gsutil mb -p  $PROJECT_ID gs://$PROJECT_ID-bqtemp
-
-bq mk -d  loadavro
-
 echo "export REGION=$REGION" > techcps1.sh
 echo "export PROJECT_ID=$DEVSHELL_PROJECT_ID" >> techcps1.sh
 
