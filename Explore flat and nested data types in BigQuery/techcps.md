@@ -16,7 +16,7 @@
 ## 🚨Copy and run the below commands in Cloud Shell:
 
 ```
-curl -LO raw.githubusercontent.com/Techcps/GSP-Short-Trick/master/Explore%20flat%20and%20nested%20data%20types%20in%20BigQuery/techcps.sh
+curl -LO raw.githubusercontent.com/Techcps/GSP/master/Explore%20flat%20and%20nested%20data%20types%20in%20BigQuery/techcps.sh
 sudo chmod +x techcps.sh
 ./techcps.sh
 ```
