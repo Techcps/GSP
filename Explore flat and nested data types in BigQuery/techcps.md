@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Explore flat and nested data types in BigQuery](https://www.cloudskillsboost.google/focuses/88305?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://youtu.be/lDJHl4ec0iw)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/7ZbZMX0uA48)
 
 ---
 
