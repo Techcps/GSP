@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Loading Taxi Data into Google Cloud SQL](https://www.cloudskillsboost.google/focuses/35625?parent=game)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/xXzt6-KEEII)
 
 ---
 
