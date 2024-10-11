@@ -56,8 +56,3 @@ gcloud projects remove-iam-policy-binding $DEVSHELL_PROJECT_ID \
   --member="serviceAccount:network-admin@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com" \
   --role="roles/compute.securityAdmin"
 
-
-gcloud compute firewall-rules list && gcloud compute firewall-rules delete allow-http-web-server --quiet
-
-
-
