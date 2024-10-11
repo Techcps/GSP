@@ -28,7 +28,7 @@ sudo chmod +x techcps.sh
 ```
 ---
 
-## 🚨Now please watch thte video carefully and follow the instructions
+## 🚨Now please watch the video carefully and follow the instructions
 
 ---
 
