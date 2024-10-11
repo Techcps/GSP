@@ -1,5 +1,7 @@
 
 
+export PROJECT_ID=$(gcloud config get-value project | sed '2d')
+
 gcloud ids endpoints list --project=$PROJECT_ID | grep STATE
 
 
