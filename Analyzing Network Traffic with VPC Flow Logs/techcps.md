@@ -22,7 +22,7 @@ export ZONE=
 ## 🚨Copy and run the below commands in Cloud Shell:
 
 ```
-curl -LO raw.githubusercontent.com/Techcps/GSP-Short-Trick/master/Analyzing%20Network%20Traffic%20with%20VPC%20Flow%20Logs/techcps.sh
+curl -LO raw.githubusercontent.com/Techcps/GSP/master/Analyzing%20Network%20Traffic%20with%20VPC%20Flow%20Logs/techcps.sh
 sudo chmod +x techcps.sh
 ./techcps.sh
 ```
