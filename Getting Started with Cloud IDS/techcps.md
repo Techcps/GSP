@@ -20,6 +20,15 @@ curl -LO raw.githubusercontent.com/Techcps/GSP/master/Getting%20Started%20with%2
 sudo chmod +x techcps.sh
 ./techcps.sh
 ```
+---
+
+## 🚨Copy and run the below commands in Cloud Shell:
+
+```
+curl -LO raw.githubusercontent.com/Techcps/GSP/master/Getting%20Started%20with%20Cloud%20IDS/techcps1.sh
+sudo chmod +x techcps1.sh
+./techcps1.sh
+```
 
 ### Congratulations, you're all done with the lab 😄
 
