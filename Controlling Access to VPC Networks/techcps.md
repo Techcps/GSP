@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Controlling Access to VPC Networks](https://www.cloudskillsboost.google/focuses/19160?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/ZqoGRf7fbnM)
 
 ---
 
