@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Configuring Traffic Management with a Load Balancer](https://www.cloudskillsboost.google/focuses/57737?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/qX1ZFdNdg7c)
 
 ---
 
