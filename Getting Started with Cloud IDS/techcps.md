@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Getting Started with Cloud IDS](https://www.cloudskillsboost.google/focuses/51154?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/eBkqJPDF53I)
 
 ---
 
