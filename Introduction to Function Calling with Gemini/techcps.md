@@ -14,7 +14,7 @@
 
 ---
 
-## 💡 Open this link and download the file[Click Here](https://github.com/Techcps/GSP/blob/main/Introduction%20to%20Function%20Calling%20with%20Gemini/intro_function_calling-v1.0.0.ipynb)
+## 💡 Open this link and download the file [Click Here](https://github.com/Techcps/GSP/blob/main/Introduction%20to%20Function%20Calling%20with%20Gemini/intro_function_calling-v1.0.0.ipynb)
 
 ---
 
