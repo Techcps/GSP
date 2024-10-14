@@ -18,18 +18,18 @@
 
 ---
 
-## 🚨Copy and run the below commands in Cloud Shell:
+### 🚨Copy and run the below commands in Cloud Shell:
 
 ```
 gcloud auth list && gcloud services enable compute.googleapis.com iam.googleapis.com iamcredentials.googleapis.com monitoring.googleapis.com logging.googleapis.com notebooks.googleapis.com aiplatform.googleapis.com bigquery.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com container.googleapis.com
 ```
 
-## 🚨NOTES:
-- 1. **Make sure to run the all cell queries**
+### 🚨NOTES:
+- **Make sure to run the all cell queries**
 
-- 2. **After successfully run the cell query just wait more than 13-15 minutes**
+- **After successfully run the cell query just wait more than 13-15 minutes**
 
-- 3. **Then re-run the cell queries and check your progress, it's working 💯% ✅**
+- **Then re-run the cell queries and check your progress, it's working 💯% ✅**
 
 ### Congratulations, you're all done with the lab 😄
 
