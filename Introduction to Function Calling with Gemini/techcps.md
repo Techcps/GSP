@@ -2,7 +2,7 @@
 
 ## 💡 Lab Link: [Introduction to Function Calling with Gemini - GSP1227](https://www.cloudskillsboost.google/focuses/85642?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/urzr8H5mALM)
 
 ---
 
@@ -24,8 +24,11 @@
 gcloud auth list && gcloud services enable compute.googleapis.com iam.googleapis.com iamcredentials.googleapis.com monitoring.googleapis.com logging.googleapis.com notebooks.googleapis.com aiplatform.googleapis.com bigquery.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com container.googleapis.com
 ```
 
-### 🚨NOTES:
-- **Make sure to run the all cell queries**
+---
+
+### 🚨NOTES: If you not getting score on task 5 then follow the below steps**
+  
+- **Make sure to run all the cell queries**
 
 - **After successfully run the cell query just wait more than 13-15 minutes**
 
