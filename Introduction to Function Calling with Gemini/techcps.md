@@ -26,7 +26,7 @@ gcloud auth list && gcloud services enable compute.googleapis.com iam.googleapis
 
 ---
 
-### 🚨NOTES: If you not getting score on task 5 then follow the below steps**
+### 🚨NOTES: If you're not getting score on task 5 then follow the below steps**
   
 - **Make sure to run all the cell queries**
 
