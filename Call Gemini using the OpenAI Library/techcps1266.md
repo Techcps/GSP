@@ -2,7 +2,7 @@
 
 ## 💡 Lab Link: [Call Gemini using the OpenAI Library - GSP1266](https://www.cloudskillsboost.google/focuses/104689?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/27EcvEQXKdg)
 
 ---
 
