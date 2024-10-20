@@ -14,7 +14,7 @@
 
 ---
 
-## 💡 Open this link and download the file [Click Here](https://github.com/Techcps/GSP/blob/main/Generative%20AI%20with%20Vertex%20AI%20Prompt%20Design/intro_prompt_design.ipynb)
+## 💡 Open this link and download the file [Click Here](https://github.com/Techcps/GSP/blob/main/Generative%20AI%20with%20Vertex%20AI%20Prompt%20Design/intro_prompt_design-v1.0.0.ipynb)
 
 ---
 
