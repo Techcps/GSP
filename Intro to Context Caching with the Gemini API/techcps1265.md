@@ -2,7 +2,7 @@
 
 ## 💡 Lab Link: [Intro to Context Caching with the Gemini API - GSP1265](https://www.cloudskillsboost.google/focuses/104701?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/JM38qipZjuw)
 
 ---
 
