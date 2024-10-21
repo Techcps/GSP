@@ -2,7 +2,7 @@
 
 ## 💡 Lab Link: [Introduction to Controlled Generation with the Gemini API - GSP1267](https://www.cloudskillsboost.google/focuses/104688?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://youtu.be/JM38qipZjuw)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/kGr9qZaUczw)
 
 ---
 
