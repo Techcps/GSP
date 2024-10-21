@@ -2,7 +2,7 @@
 
 ## 💡 Lab Link: [Generative AI with Vertex AI: Prompt Design - GSP1151](https://www.cloudskillsboost.google/focuses/86501?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://youtu.be/YFdREEbsmjs)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/0Q16WDqZamw)
 
 ---
 
