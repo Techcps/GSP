@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Supervised Fine Tuning with Gemini for Question & Answering - GSP1269](https://www.cloudskillsboost.google/focuses/104686?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/awq2MKlNWnQ)
 
 ---
 
