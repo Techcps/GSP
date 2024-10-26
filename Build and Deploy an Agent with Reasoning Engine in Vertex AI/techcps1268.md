@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Build and Deploy an Agent with Reasoning Engine in Vertex AI - GSP1268](https://www.cloudskillsboost.google/focuses/104687?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/GAk6G6bw0hs)
 
 ---
 
