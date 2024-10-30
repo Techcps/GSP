@@ -1,7 +1,7 @@
 
 ## 💡 Lab Link: [Getting Started with Vertex AI Gemini 1.5 Flash - GSP1270](https://www.cloudskillsboost.google/focuses/104685?parent=catalog)
 
-## 🚀 Lab Solution [Watch Here](https://youtu.be/0Q16WDqZamw)
+## 🚀 Lab Solution [Watch Here](https://youtu.be/dii43AoJizM)
 
 ---
 
