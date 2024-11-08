@@ -1,7 +1,7 @@
 
 ### 💡 Lab Link: [Introduction to Vertex AI Embeddings: Text and Multimodal - GSP1280](https://www.cloudskillsboost.google/focuses/104682?parent=catalog)
 
-### 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/wrU3BLyxw3g)
 
 ---
 
