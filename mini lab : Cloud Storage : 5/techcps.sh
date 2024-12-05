@@ -4,3 +4,5 @@ read -p "Enter the BUCKET_NAME: " BUCKET_NAME
 
 gsutil iam ch -d allUsers gs://$BUCKET_NAME
 
+gsutil iam ch -d allUsers $BUCKET_NAME
+
