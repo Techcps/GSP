@@ -2,7 +2,7 @@
 
 ### 💡 Lab Link: [mini lab : Cloud Storage : 2](https://www.cloudskillsboost.google/focuses/36422?parent=game)
 
-### 🚀 Lab Solution [Watch Here](https://youtu.be/GqH74NLpMM8)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/YSe9kuGSqv4)
 
 ---
 
