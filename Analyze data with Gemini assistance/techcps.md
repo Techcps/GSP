@@ -1,7 +1,7 @@
 
 ### 💡 Lab Link: [Analyze data with Gemini assistance](https://www.cloudskillsboost.google/focuses/80989?parent=catalog)
 
-### 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/lwXrBab-gRM)
 
 ---
 
