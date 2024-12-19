@@ -5,7 +5,12 @@
     apt-get install -y apache2 git
 
     # install Ops Agent
-    
+    curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
+    sudo bash add-logging-agent-repo.sh --also-install
+
+    # install monitoring agent
+    curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh
+    sudo bash add-monitoring-agent-repo.sh --also-install
 
     # download and unpack files
     cd /
