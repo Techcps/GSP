@@ -40,19 +40,6 @@ gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
   --role="roles/bigquery.dataEditor"
 
 
-export DEVSHELL_PROJECT_ID=$(gcloud config get-value project)
-export PROJECT_NUMBER=$(gcloud projects describe $DEVSHELL_PROJECT_ID --format="value(projectNumber)")
-
-gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
-    --member="serviceAccount:service-$PROJECT_NUMBER@gcp-sa-logging.iam.gserviceaccount.com" \
-    --role="roles/bigquery.dataEditor"
-
-gcloud projects get-iam-policy $DEVSHELL_PROJECT_ID \
-    --flatten="bindings[].members" \
-    --format="table(bindings.role)" \
-    --filter="bindings.members:service-$PROJECT_NUMBER@gcp-sa-logging.iam.gserviceaccount.com"
-
-
 TABLE_ID=$(bq ls --project_id $DEVSHELL_PROJECT_ID --dataset_id project_logs --format=json | jq -r '.[0].tableReference.tableId')
 
 
@@ -74,5 +61,22 @@ gcloud logging metrics create 403s \
     --project=$DEVSHELL_PROJECT_ID \
     --description="Subscribe to techcps" \
     --log-filter='resource.type="gce_instance" AND log_name="projects/'$DEVSHELL_PROJECT_ID'/logs/syslog"'
+
+
+
+sleep 20 
+
+
+export DEVSHELL_PROJECT_ID=$(gcloud config get-value project)
+export PROJECT_NUMBER=$(gcloud projects describe $DEVSHELL_PROJECT_ID --format="json(projectNumber)" --quiet | jq -r '.projectNumber')
+
+gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
+    --member="serviceAccount:service-$PROJECT_NUMBER@gcp-sa-logging.iam.gserviceaccount.com" \
+    --role="roles/bigquery.dataEditor"
+
+gcloud projects get-iam-policy $DEVSHELL_PROJECT_ID \
+    --flatten="bindings[].members" \
+    --format="table(bindings.role)" \
+    --filter="bindings.members:service-$PROJECT_NUMBER@gcp-sa-logging.iam.gserviceaccount.com"
 
 
