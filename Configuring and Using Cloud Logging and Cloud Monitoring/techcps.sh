@@ -16,8 +16,7 @@ export DEVSHELL_PROJECT_ID=$(gcloud config get-value project)
 
 curl https://storage.googleapis.com/cloud-training/gcpsec/labs/stackdriver-lab.tgz | tar -zxf -
 
-cd stackdriver-
-
+cd stackdriver-lab
 
 curl -LO https://raw.githubusercontent.com/Techcps/GSP/master/Configuring%20and%20Using%20Cloud%20Logging%20and%20Cloud%20Monitoring/stackdriver-lab/linux_startup.sh
 
