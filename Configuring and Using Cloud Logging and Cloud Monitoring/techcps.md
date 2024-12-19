@@ -23,13 +23,6 @@ sudo chmod +x techcps.sh
 ```
 ---
 
-```
-SELECT
-  logName, resource.type, resource.labels.zone, resource.labels.project_id,
-FROM
-  ``
-```
-
 ### Congratulations, you're all done with the lab 😄
 
 ---
