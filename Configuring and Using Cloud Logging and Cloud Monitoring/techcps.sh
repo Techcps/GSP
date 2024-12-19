@@ -39,10 +39,13 @@ gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
   --member="serviceAccount:$SERVICE_ACCOUNT" \
   --role="roles/bigquery.dataEditor"
 
+
+export DEVSHELL_PROJECT_ID=$(gcloud config get-value project)
+export PROJECT_NUMBER=$(gcloud projects describe $DEVSHELL_PROJECT_ID --format="value(projectNumber)")
+
 gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID \
     --member="serviceAccount:service-$PROJECT_NUMBER@gcp-sa-logging.iam.gserviceaccount.com" \
     --role="roles/bigquery.dataEditor"
-
 
 gcloud projects get-iam-policy $DEVSHELL_PROJECT_ID \
     --flatten="bindings[].members" \
