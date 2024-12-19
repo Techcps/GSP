@@ -13,8 +13,8 @@ gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID --member=serviceAcco
 gcloud projects add-iam-policy-binding $DEVSHELL_PROJECT_ID --member=serviceAccount:windows-servers@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com --role='roles/monitoring.metricWriter'
 
 # create vms
-gcloud compute instances create linux-server-$DEVSHELL_PROJECT_ID --service-account linux-servers@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com --zone us-west1-b --metadata-from-file startup-script=linux_startup.sh
-gcloud compute instances create windows-server-$DEVSHELL_PROJECT_ID --service-account windows-servers@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com --image-project windows-cloud --image windows-server-1909-dc-core-v20200609 --zone us-west1-b --metadata-from-file windows-startup-script-ps1=windows_startup.ps1
+gcloud compute instances create linux-server-$DEVSHELL_PROJECT_ID --service-account linux-servers@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com --zone us-west1-b --metadata-from-file startup-script=linux_startup.sh --machine-type=e2-micro
+gcloud compute instances create windows-server-$DEVSHELL_PROJECT_ID --service-account windows-servers@$DEVSHELL_PROJECT_ID.iam.gserviceaccount.com --image-project windows-cloud --image windows-server-2016-dc-core-v20240214 --zone us-west1-b --metadata-from-file windows-startup-script-ps1=windows_startup.ps1 --machine-type=e2-standard-2
 gcloud compute instances add-tags linux-server-$DEVSHELL_PROJECT_ID --zone us-west1-b --tags http-server
 
 # open firewall for linux server
