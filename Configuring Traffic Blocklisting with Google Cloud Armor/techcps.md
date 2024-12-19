@@ -2,7 +2,7 @@
 
 ### 💡 Lab Link: [Configuring Traffic Blocklisting with Google Cloud Armor](https://www.cloudskillsboost.google/focuses/19185?parent=catalog)
 
-### 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/bcO_ur5N00A)
 
 ---
 
