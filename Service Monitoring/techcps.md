@@ -24,6 +24,8 @@ sudo chmod +x techcps.sh
 
 ### 💡Now follow the video instructions
 ```
+cd HelloLoggingNodeJS
+
 gcloud app deploy --quiet
 ```
 
