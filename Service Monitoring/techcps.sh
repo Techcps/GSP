@@ -36,9 +36,11 @@ EOF_CP
 
 gcloud beta monitoring channels create --channel-content-from-file="email-channel.json"
 
-echo "Click on the link below to create an availability SLO"
+echo ""
 
-echo "Click here...[https://console.cloud.google.com/monitoring/services?invt=AbknMg&project=$DEVSHELL_PROJECT_ID]..."
+echo "Click the below link to create an availability SLO"
+
+echo "${YELLOW}${BOLD}Click Here...[https://console.cloud.google.com/monitoring/services?invt=AbknMg&project=$DEVSHELL_PROJECT_ID]${RESET}"
 
 echo ""
 
