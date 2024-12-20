@@ -2,7 +2,7 @@
 
 ### 💡 Lab Link: [Configuring and Viewing Cloud Audit Logs](https://www.cloudskillsboost.google/focuses/19184?parent=catalog)
 
-### 🚀 Lab Solution [Watch Here](https://youtu.be/6Zq2JGNJfaU)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/_EomdtkCawA)
 
 ---
 
