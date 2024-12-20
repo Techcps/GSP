@@ -2,7 +2,7 @@
 
 ### 💡 Lab Link: [Configuring and Using Cloud Logging and Cloud Monitoring](https://www.cloudskillsboost.google/focuses/19183?parent=catalog)
 
-### 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/6Zq2JGNJfaU)
 
 ---
 
