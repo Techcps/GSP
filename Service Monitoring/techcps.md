@@ -1,7 +1,7 @@
 
 ### 💡 Lab Link: [Service Monitoring](https://www.cloudskillsboost.google/focuses/19476?parent=catalog)
 
-### 🚀 Lab Solution [Watch Here](https://www.youtube.com/@techcps)
+### 🚀 Lab Solution [Watch Here](https://youtu.be/661HaITSVh8)
 
 ---
 
