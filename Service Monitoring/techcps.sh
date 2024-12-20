@@ -18,7 +18,7 @@ git clone https://github.com/haggman/HelloLoggingNodeJS.git
 
 cd HelloLoggingNodeJS
 
-gcloud app create --region=$region
+gcloud app create --region=$REGION
 
 gcloud app deploy --quiet
 
