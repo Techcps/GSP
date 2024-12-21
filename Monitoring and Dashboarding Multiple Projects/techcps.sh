@@ -98,10 +98,3 @@ EOF_CP
 
 gcloud beta monitoring channels create --channel-content-from-file="email-channel.json"
 
-echo ""
-
-echo "${YELLOW}${BOLD}https://console.cloud.google.com/monitoring?cloudshell=true&project=$PROJECT_MONITORING${RESET}"
-
-echo ""
-
-
