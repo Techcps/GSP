@@ -1,5 +1,5 @@
 
-## 💡 Lab Link: [Getting Started with the Vertex AI Gemini API with cURL - GSP1228](https://www.cloudskillsboost.google/focuses/87316?parent=catalog) 
+## 💡 Lab Link: [Getting Started with the Gemini API in Vertex AI with cURLt - GSP1228](https://www.cloudskillsboost.google/focuses/87316?parent=catalog) 
 
 ## 🚀 Lab Solution [Watch Here](https://youtu.be/SDrxHdhoSrw)
 
