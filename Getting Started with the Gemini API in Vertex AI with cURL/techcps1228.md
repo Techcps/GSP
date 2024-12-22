@@ -13,7 +13,7 @@
 
 ---
 
-## 💡 Open this link and download the file [Click Here](https://github.com/Techcps/GSP/blob/main/Getting%20Started%20with%20the%20Vertex%20AI%20Gemini%20API%20with%20cURL/intro_gemini_curl.ipynb)
+## 💡 Open this link and download the file [Click Here](https://github.com/Techcps/GSP/blob/main/Getting%20Started%20with%20the%20Gemini%20API%20in%20Vertex%20AI%20with%20cURL/intro_gemini_curl-v1.0.0.ipynb)
 
 ---
 
