@@ -56,13 +56,13 @@ gcloud compute ssh worker-2-server --project=$PROJECT_WORKER2 --zone=$ZONE --qui
 
 gcloud config set project $PROJECT_WORKER1  
 gcloud iam service-accounts create worker-1-server \
-  --description="Service account for Ethereum RPC node" \
+  --description="Service account for Worker 1 Server" \
   --display-name="worker-1-server"
 
 
 gcloud config set project $PROJECT_WORKER2
 gcloud iam service-accounts create worker-2-server \
-  --description="Service account for Ethereum RPC node" \
+  --description="Service account for  Worker 2 Server" \
    --display-name="worker-2-server"  
 
 
