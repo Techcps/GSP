@@ -62,7 +62,7 @@ gcloud iam service-accounts create worker-1-server \
 
 gcloud config set project $PROJECT_WORKER2
 gcloud iam service-accounts create worker-2-server \
-  --description="Service account for  Worker 2 Server" \
+  --description="Service account for Worker 2 Server" \
    --display-name="worker-2-server"  
 
 
