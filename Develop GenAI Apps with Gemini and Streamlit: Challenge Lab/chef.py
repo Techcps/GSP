@@ -120,7 +120,7 @@ The customer's wine preference is {wine} \n
 Please provide some for meal recommendations.
 For each recommendation include preparation instructions,
 time to prepare
-and the recipe title at the begining of the response.
+and the recipe title at the beginning of the response.
 Then include the wine paring for each recommendation.
 At the end of the recommendation provide the calories associated with the meal
 and the nutritional facts.
