@@ -1,7 +1,10 @@
 
 
 gcloud compute firewall-rules delete open-access --quiet
- 
+
+
+gcloud compute instances start bastion --zone=$ZONE --project=$DEVSHELL_PROJECT_ID
+
 
 gcloud compute firewall-rules create ssh-ingress --allow=tcp:22 --source-ranges 35.235.240.0/20 --target-tags $IAP_NETWORK_TAG --network acme-vpc
  
